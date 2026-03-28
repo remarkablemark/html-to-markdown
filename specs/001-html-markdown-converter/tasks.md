@@ -30,11 +30,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/utils/sanitizeHtml.ts`
-- [ ] T006 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/utils/convertHtmlToMarkdown.ts`
+- [ ] T005 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/utils/sanitizeHtml.test.ts`
+- [ ] T006 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/utils/convertHtmlToMarkdown.test.ts`
 - [ ] T007 [P] Add debounce helper with timer reset support in `src/utils/debounce.ts`
-- [ ] T008 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/utils/convertHtmlToMarkdown.test.ts`
-- [ ] T009 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/utils/sanitizeHtml.test.ts`
+- [ ] T008 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/utils/sanitizeHtml.ts`
+- [ ] T009 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/utils/convertHtmlToMarkdown.ts`
 - [ ] T010 Integrate converter component exports in `src/components/Converter/index.ts`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
@@ -232,3 +232,4 @@ Task: "T029 [US3] Add header action integration test for successful copy label t
 - Story labels are applied only to user story phases.
 - Paths align with a concern-based single-project frontend structure (`components`, `utils`, `constants`, `types`).
 - No server/API tasks are included because v1 is strictly client-side.
+- FR-028 (no explicit conversion latency SLA in v1) is treated as a scope constraint and does not require a standalone implementation task.

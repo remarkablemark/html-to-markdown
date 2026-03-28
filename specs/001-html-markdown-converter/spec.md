@@ -246,8 +246,9 @@ output can be copied and pasted without format loss.
   output.
 - **SC-003**: At least 90% of users can complete the convert-and-copy workflow
   on their first attempt.
-- **SC-004**: Conversion feedback for invalid or empty input is shown in 100% of
-  applicable cases.
+- **SC-004**: For empty or non-meaningful input, 100% of applicable cases present
+  deterministic state-based feedback only (blank output and disabled `Copy` when
+  output is empty), with no additional failure toasts/messages in v1.
 
 ## Assumptions
 
