@@ -28,6 +28,7 @@
 - Q: How should the app handle copy failures (e.g., clipboard permission denied)? → A: No feedback; keep current state
 - Q: What performance target should we require for conversion updates after input changes? → A: No explicit timing target in v1
 - Q: How should the preview toggle behave on desktop? → A: Hide toggle on desktop; show only on mobile
+- Q: On first load with pre-filled sample HTML, what should happen to Markdown output? → A: Auto-convert sample immediately on load
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -120,6 +121,8 @@ output can be copied and pasted without format loss.
    failure feedback.
 10. **Given** a desktop viewport, **When** the split-pane layout is active,
     **Then** the preview toggle control is not shown.
+11. **Given** first load with pre-filled sample HTML, **When** the interface
+    initializes, **Then** Markdown output is auto-generated from that sample.
 
 ---
 
@@ -191,6 +194,8 @@ output can be copied and pasted without format loss.
   target in v1.
 - **FR-029**: System MUST display the preview toggle control only on mobile
   single-pane layout and MUST hide it on desktop split-pane layout.
+- **FR-030**: System MUST auto-convert the default sample HTML on first load so
+  Markdown output is populated immediately.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
