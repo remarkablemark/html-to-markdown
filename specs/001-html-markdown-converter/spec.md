@@ -16,6 +16,8 @@
 - Q: How should unsupported/custom HTML tags be handled? → A: Drop tag, keep inner text/content
 - Q: For browser deployment, what sanitizer approach should be used? → A: Browser-native sanitizer policy (e.g., DOMPurify)
 - Q: What mobile responsiveness behavior is required? → A: Mobile-first single textarea with fixed-header preview toggle; desktop split two-pane layout (HTML left, Markdown right)
+- Q: When should conversion run? → A: Automatically as user types (debounced)
+- Q: What debounce target should auto-conversion use? → A: 300ms debounce
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -39,6 +41,8 @@ lists, and code content.
 2. **Given** HTML containing links and images, **When** conversion runs,
    **Then** the output includes corresponding Markdown link and image syntax with
    preserved URLs and descriptive text.
+3. **Given** the user types or edits HTML input, **When** 300ms elapses after
+   the last input change, **Then** the Markdown output updates automatically.
 
 ---
 
@@ -125,6 +129,8 @@ output can be copied and pasted without format loss.
 - **FR-014**: System MUST implement a desktop layout with two simultaneous
   textarea panes where HTML input is on the left and Markdown output is on the
   right.
+- **FR-015**: System MUST trigger conversion automatically after HTML input
+  changes using a 300ms debounce interval.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
