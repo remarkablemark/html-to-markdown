@@ -23,6 +23,7 @@
 - Q: Should v1 support input methods beyond paste/type? → A: Paste/type HTML only
 - Q: How should the copy button behave in the header? → A: Header copy button on both mobile and desktop; disabled when output empty
 - Q: What feedback should the header `Copy` button provide on click? → A: Change button label to `Copied` for 1–2 seconds
+- Q: What should the default HTML input be on first load? → A: Pre-filled sample HTML snippet including headings, bold, italic, inline code, unordered/ordered lists, link, image, blockquote, code block, table, hr, and checklist
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -48,6 +49,9 @@ lists, and code content.
    preserved URLs and descriptive text.
 3. **Given** the user types or edits HTML input, **When** 300ms elapses after
    the last input change, **Then** the Markdown output updates automatically.
+4. **Given** first load with no user-entered session content, **When** the
+   interface initializes, **Then** the HTML input is pre-filled with a sample
+   snippet that demonstrates key supported elements.
 
 ---
 
@@ -117,6 +121,7 @@ output can be copied and pasted without format loss.
 - Unsupported or custom tags
 - Viewport resize transitions between mobile single-pane and desktop split-pane
 - Page reload clears current input/output session state
+- First load sample content includes all required example element types
 
 ## Requirements _(mandatory)_
 
@@ -160,6 +165,11 @@ output can be copied and pasted without format loss.
   is empty.
 - **FR-022**: System MUST change the header `Copy` button label to `Copied` for
   1–2 seconds after a successful copy action.
+- **FR-023**: System MUST pre-fill HTML input on first load with a sample
+  snippet when no user-entered session content exists.
+- **FR-024**: System MUST ensure the default sample HTML includes examples of
+  heading, bold, italic, inline code, unordered list, ordered list, link,
+  image, blockquote, code block, table, horizontal rule, and checklist.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -182,6 +192,8 @@ output can be copied and pasted without format loss.
 - **SC-001**: At least 95% of representative HTML samples convert successfully
   without manual correction for primary structures (headings, paragraphs,
   emphasis, links, lists, and code).
+- **SC-005**: On first load, 100% of users see a default HTML sample containing
+  all required demonstration elements.
 - **SC-002**: 100% of repeated conversions of the same input produce identical
   output.
 - **SC-003**: At least 90% of users can complete the convert-and-copy workflow
@@ -196,7 +208,7 @@ output can be copied and pasted without format loss.
 - Initial scope targets a single-content conversion workflow rather than
   batch-processing multiple documents.
 - The feature is expected to run in environments where users can paste or type
-  HTML directly.
+  HTML directly, with a default sample shown on first load.
 - HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
