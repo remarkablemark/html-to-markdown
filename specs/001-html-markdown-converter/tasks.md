@@ -161,7 +161,7 @@
 ### Parallel Opportunities
 
 - Setup tasks `T003` and `T004` can run in parallel.
-- Foundational tests `T008` and `T009` can run in parallel with utility task `T007`.
+- Foundational tests `T005` and `T006` can run in parallel with utility task `T007`.
 - US1 tests `T011`-`T013` can run in parallel.
 - US2 tests `T018`-`T021` can run in parallel.
 - US3 tests `T026`-`T030` can run in parallel.

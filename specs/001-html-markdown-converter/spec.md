@@ -158,7 +158,8 @@ output can be copied and pasted without format loss.
   lists, quotes, images, and code.
 - **FR-003**: System MUST preserve textual content order from input to output.
 - **FR-004**: System MUST handle malformed or partial HTML without unexpected
-  termination and return best-effort Markdown output.
+  termination and return deterministic best-effort Markdown output that preserves
+  recoverable text order when possible.
 - **FR-005**: System MUST define and apply deterministic fallback behavior for
   unsupported elements.
 - **FR-007**: System MUST show a deterministic empty-output state when
@@ -170,8 +171,9 @@ output can be copied and pasted without format loss.
   contents from conversion output.
 - **FR-010**: System MUST sanitize input before conversion by removing unsafe
   elements and attributes using a browser-safe sanitization policy.
-- **FR-011**: System MUST attempt best-effort conversion for large inputs
-  without enforcing a hard input size limit.
+- **FR-011**: System MUST attempt deterministic best-effort conversion for large
+  inputs without enforcing a hard input size limit and MUST avoid hard-failure
+  behavior solely due to input size.
 - **FR-012**: System MUST drop unsupported/custom HTML tags while preserving
   their inner text/content in the Markdown output.
 - **FR-013**: System MUST implement a mobile-first layout where small screens
