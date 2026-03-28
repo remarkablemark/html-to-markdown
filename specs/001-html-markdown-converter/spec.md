@@ -26,6 +26,7 @@
 - Q: What should the default HTML input be on first load? → A: Pre-filled sample HTML snippet including headings, bold, italic, inline code, unordered/ordered lists, link, image, blockquote, code block, table, hr, and checklist
 - Q: How should dark mode behavior work? → A: Follow system theme automatically only; use existing Tailwind `dark:` classes (no manual theme toggle)
 - Q: How should the app handle copy failures (e.g., clipboard permission denied)? → A: No feedback; keep current state
+- Q: What performance target should we require for conversion updates after input changes? → A: No explicit timing target in v1
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -183,6 +184,8 @@ output can be copied and pasted without format loss.
 - **FR-026**: System MUST NOT provide a manual theme override toggle in v1.
 - **FR-027**: System MUST keep the current copy button state unchanged if a
   copy action fails and MUST NOT show additional failure feedback in v1.
+- **FR-028**: System MUST NOT require an explicit conversion latency timing
+  target in v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -227,6 +230,7 @@ output can be copied and pasted without format loss.
 - HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
+- Conversion responsiveness has no explicit latency SLA in v1.
 - Existing project quality gates and testing standards remain mandatory for this
   feature.
 
