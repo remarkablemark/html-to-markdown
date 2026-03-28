@@ -161,6 +161,11 @@ output can be copied and pasted without format loss.
   termination and return best-effort Markdown output.
 - **FR-005**: System MUST define and apply deterministic fallback behavior for
   unsupported elements.
+- **FR-007**: System MUST show a deterministic empty-output state when
+  conversion yields empty Markdown: output pane remains blank, header `Copy`
+  button is disabled, and no additional error toast is shown.
+- **FR-008**: System MUST produce consistent output for equivalent input under
+  the same conversion rules.
 - **FR-009**: System MUST remove `<script>` and `<style>` elements and their
   contents from conversion output.
 - **FR-010**: System MUST sanitize input before conversion by removing unsafe
@@ -175,8 +180,8 @@ output can be copied and pasted without format loss.
 - **FR-014**: System MUST implement a desktop layout with two simultaneous
   textarea panes where HTML input is on the left and Markdown output is on the
   right.
-- **FR-015**: System MUST trigger conversion automatically after HTML input
-  changes using a 300ms debounce interval.
+- **FR-015**: System MUST schedule conversion execution 300ms after the last
+  HTML input change (debounce trigger behavior).
 - **FR-016**: System MUST NOT persist HTML input or Markdown output between page
   reloads in v1.
 - **FR-017**: System MUST provide the mobile preview toggle as a button whose
@@ -211,18 +216,13 @@ output can be copied and pasted without format loss.
 - **FR-032**: System MUST allow only safe URL schemes (`http`, `https`,
   `mailto`) for link/image targets and remove unsafe schemes through the
   sanitizer policy.
-- **FR-033**: System MUST keep Markdown output synchronized with the latest HTML
-  input after each input change.
+- **FR-033**: After each triggered conversion run, Markdown output MUST exactly
+  reflect the latest HTML input state (synchronization invariant).
 - **FR-034**: System MUST clear Markdown output when HTML input is empty.
 - **FR-035**: System MUST execute HTML-to-Markdown conversion entirely
   client-side in the browser.
 - **FR-036**: System MUST NOT require any server/API calls for conversion in
   v1.
-- **FR-007**: System MUST show a deterministic empty-output state when
-  conversion yields empty Markdown: output pane remains blank, header `Copy`
-  button is disabled, and no additional error toast is shown.
-- **FR-008**: System MUST produce consistent output for equivalent input under
-  the same conversion rules.
 
 ### Key Entities _(include if feature involves data)_
 

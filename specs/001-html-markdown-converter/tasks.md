@@ -54,6 +54,7 @@
 - [ ] T011 [P] [US1] Add converter integration test for prefilled sample and immediate initial conversion in `src/components/Converter/Converter.test.tsx`
 - [ ] T012 [P] [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in `src/components/Converter/Converter.test.tsx`
 - [ ] T013 [P] [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in `src/components/Converter/Converter.test.tsx`
+- [ ] T047 [P] [US1] Add sample fixture completeness test asserting heading/bold/italic/inline code/unordered list/ordered list/link/image/blockquote/code block/table/hr/checklist coverage in `src/constants/sampleHtml.test.ts`
 
 ### Implementation for User Story 1
 
@@ -166,6 +167,7 @@
 - US3 tests `T026`-`T030` can run in parallel.
 - Polish doc tasks `T036` and `T037` can run in parallel.
 - Coverage tasks `T042`, `T044`, `T045`, and `T046` can run in parallel.
+- Sample coverage test `T047` can run in parallel with other US1 tests.
 
 ---
 
@@ -175,6 +177,7 @@
 Task: "T011 [US1] Add converter integration test for prefilled sample and immediate initial conversion in src/components/Converter/Converter.test.tsx"
 Task: "T012 [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in src/components/Converter/Converter.test.tsx"
 Task: "T013 [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in src/components/Converter/Converter.test.tsx"
+Task: "T047 [US1] Add sample fixture completeness test in src/constants/sampleHtml.test.ts"
 ```
 
 ## Parallel Example: User Story 2
@@ -207,7 +210,7 @@ Task: "T029 [US3] Add header action integration test for successful copy label t
 ### Incremental Delivery
 
 1. Foundation complete (`T001`-`T010`).
-2. Deliver US1 (`T011`-`T017`) and validate.
+2. Deliver US1 (`T011`-`T017`, `T047`) and validate.
 3. Deliver US2 (`T018`-`T025`) and validate.
 4. Deliver US3 (`T026`-`T035`) and validate.
 5. Finish polish and quality gates (`T036`-`T046`).
