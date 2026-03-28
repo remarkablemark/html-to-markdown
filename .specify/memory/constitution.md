@@ -1,73 +1,99 @@
-# [PROJECT_NAME] Constitution
+<!--
+Sync Impact Report
+- Version change: template-placeholder → 1.0.0
+- Modified principles:
+  - Principle 1 placeholder → I. Deterministic Conversion Semantics
+  - Principle 2 placeholder → II. Accessible and Predictable UX
+  - Principle 3 placeholder → III. Test-First Reliability (NON-NEGOTIABLE)
+  - Principle 4 placeholder → IV. Type-Safe, Lint-Clean Code
+  - Principle 5 placeholder → V. Minimal, Documented Change Surface
+- Added sections:
+  - Technical Standards
+  - Delivery Workflow & Quality Gates
+- Removed sections:
+  - None
+- Templates requiring updates:
+  - ✅ updated .specify/templates/plan-template.md
+  - ✅ updated .specify/templates/spec-template.md
+  - ✅ updated .specify/templates/tasks-template.md
+  - ✅ verified .specify/templates/agent-file-template.md (no changes required)
+  - ⚠ pending .specify/templates/commands/*.md (directory not present)
+- Follow-up TODOs:
+  - None
+-->
 
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# HTML to Markdown Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
+### I. Deterministic Conversion Semantics
 
-<!-- Example: I. Library-First -->
+All HTML-to-Markdown transformations MUST be deterministic for equivalent input and
+configuration. Converter rules MUST preserve semantic intent (e.g., headings, lists,
+links, emphasis, code blocks) and MUST define explicit behavior for malformed or
+unsupported markup. Rationale: stable, semantic output is the core product contract.
 
-[PRINCIPLE_1_DESCRIPTION]
+### II. Accessible and Predictable UX
 
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+User-facing workflows MUST use semantic HTML and accessibility-first interactions,
+including keyboard navigability, meaningful labels, and readable state feedback.
+UI behavior MUST remain predictable across desktop and mobile breakpoints.
+Rationale: conversion tools are utility software and must be usable by all users.
 
-### [PRINCIPLE_2_NAME]
+### III. Test-First Reliability (NON-NEGOTIABLE)
 
-<!-- Example: II. CLI Interface -->
+Every behavior change MUST begin with failing tests that define expected outcomes
+before implementation. Unit and integration tests MUST cover parser behavior,
+edge-case input, and regression scenarios. Changes are complete only when
+`npm run test:ci` passes under configured coverage thresholds. Rationale: converter
+logic is edge-case heavy and requires regression-proof evolution.
 
-[PRINCIPLE_2_DESCRIPTION]
+### IV. Type-Safe, Lint-Clean Code
 
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+All code MUST pass TypeScript strict checks and lint rules with zero unresolved
+errors (`npm run lint` and `npm run lint:tsc`). Public logic MUST prefer explicit
+interfaces and type guards over implicit assumptions. Rationale: type and lint
+discipline prevent silent converter regressions and improve maintainability.
 
-### [PRINCIPLE_3_NAME]
+### V. Minimal, Documented Change Surface
 
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+Implementations MUST favor simple, composable solutions and avoid speculative
+abstractions. Every user-visible or contract-affecting change MUST update relevant
+documentation (README, feature specs, or quickstart guidance) in the same change.
+Rationale: small, documented deltas reduce risk and improve contributor velocity.
 
-[PRINCIPLE_3_DESCRIPTION]
+## Technical Standards
 
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+- The project stack is React 19, TypeScript 5 (strict), Tailwind CSS 4, Vite 8,
+  Vitest 4, and Node.js 24.
+- React code MUST use functional components, top-level hooks only, and avoid
+  `useMemo`/`useCallback` unless a verified correctness requirement exists.
+- Styling MUST use Tailwind utilities and maintain responsive behavior.
+- Runtime diagnostics MUST avoid `console.log` and `debugger` in committed code.
 
-### [PRINCIPLE_4_NAME]
+## Delivery Workflow & Quality Gates
 
-<!-- Example: IV. Integration Testing -->
-
-[PRINCIPLE_4_DESCRIPTION]
-
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
-
-### [PRINCIPLE_5_NAME]
-
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-
-[PRINCIPLE_5_DESCRIPTION]
-
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-## [SECTION_2_NAME]
-
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Work MUST be traceable to a feature spec and implementation plan before coding.
+- Pull requests MUST include evidence of passing quality gates:
+  `npm run lint`, `npm run lint:tsc`, `npm run test:ci`, and `npm run build`.
+- Reviews MUST confirm constitutional compliance, including accessibility,
+  deterministic conversion behavior, and documentation updates.
+- If a constitutional gate is intentionally violated, the plan MUST document the
+  exception in a Complexity Tracking section with explicit justification.
 
 ## Governance
 
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution is the highest-priority engineering policy for this repository.
+Amendments require: (1) documented rationale, (2) updates to impacted templates and
+guidance files, and (3) approval in a reviewed change.
 
-[GOVERNANCE_RULES]
+Versioning policy:
 
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- MAJOR: Backward-incompatible governance changes or principle removal/redefinition.
+- MINOR: New principle/section or materially expanded guidance.
+- PATCH: Clarifications or non-semantic wording improvements.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+Compliance review is mandatory for every pull request. Reviewers MUST explicitly
+verify constitutional gates and reject changes that fail mandatory quality checks.
 
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-28 | **Last Amended**: 2026-03-28

@@ -31,7 +31,18 @@
 
 _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-[Gates determined based on constitution file]
+- [ ] Deterministic conversion behavior is specified for core and edge-case HTML
+      inputs, including malformed/unsupported markup handling.
+- [ ] Accessibility and responsive UX expectations are defined for all user-facing
+      flows (semantic structure, keyboard use, readable feedback).
+- [ ] Test-first plan is explicit: failing tests are identified before implementation,
+      and required test scope (unit/integration/regression) is listed.
+- [ ] Type safety and lint quality gates are included in execution plan:
+      `npm run lint` and `npm run lint:tsc`.
+- [ ] Delivery quality gates are planned and traceable:
+      `npm run test:ci` and `npm run build`.
+- [ ] Documentation impact is identified (README/spec/quickstart updates) for any
+      user-visible or contract-level behavior change.
 
 ## Project Structure
 

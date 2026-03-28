@@ -126,3 +126,16 @@ _Example of marking unclear requirements:_
 - [Assumption about scope boundaries, e.g., "Mobile support is out of scope for v1"]
 - [Assumption about data/environment, e.g., "Existing authentication system will be reused"]
 - [Dependency on existing system/service, e.g., "Requires access to the existing user profile API"]
+
+## Constitution Alignment _(mandatory)_
+
+- **Deterministic Conversion Rules**: [Define expected Markdown output behavior,
+  including malformed/unsupported HTML handling]
+- **Accessibility & Responsive UX**: [List semantic, keyboard, feedback, and
+  breakpoint expectations for user-facing changes]
+- **Test-First Evidence**: [Describe failing tests to be written first and required
+  unit/integration/regression coverage]
+- **Quality Gates**: [Confirm planned validation via `npm run lint`,
+  `npm run lint:tsc`, `npm run test:ci`, and `npm run build`]
+- **Documentation Impact**: [Identify README/spec/quickstart updates required by
+  user-visible or contract-level changes]
