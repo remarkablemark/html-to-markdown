@@ -25,6 +25,7 @@
 - Q: What feedback should the header `Copy` button provide on click? → A: Change button label to `Copied` for 1–2 seconds
 - Q: What should the default HTML input be on first load? → A: Pre-filled sample HTML snippet including headings, bold, italic, inline code, unordered/ordered lists, link, image, blockquote, code block, table, hr, and checklist
 - Q: How should dark mode behavior work? → A: Follow system theme automatically only; use existing Tailwind `dark:` classes (no manual theme toggle)
+- Q: How should the app handle copy failures (e.g., clipboard permission denied)? → A: No feedback; keep current state
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -112,6 +113,9 @@ output can be copied and pasted without format loss.
 8. **Given** the user has system dark mode enabled, **When** the interface is
    loaded, **Then** the UI renders in dark mode automatically without a manual
    theme switch.
+9. **Given** clipboard copy fails, **When** the user clicks the header `Copy`
+   button, **Then** the UI keeps the current button state with no additional
+   failure feedback.
 
 ---
 
@@ -177,6 +181,8 @@ output can be copied and pasted without format loss.
 - **FR-025**: System MUST follow the user's system theme preference
   automatically for light/dark mode.
 - **FR-026**: System MUST NOT provide a manual theme override toggle in v1.
+- **FR-027**: System MUST keep the current copy button state unchanged if a
+  copy action fails and MUST NOT show additional failure feedback in v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
