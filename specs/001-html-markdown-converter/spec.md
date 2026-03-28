@@ -19,6 +19,7 @@
 - Q: When should conversion run? → A: Automatically as user types (debounced)
 - Q: What debounce target should auto-conversion use? → A: 300ms debounce
 - Q: Should the app persist HTML/Markdown content between page reloads? → A: No persistence; clear on reload
+- Q: What accessibility behavior is required for the mobile preview toggle? → A: A button is sufficient; button text switches between HTML and Markdown
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -90,6 +91,8 @@ output can be copied and pasted without format loss.
 3. **Given** a desktop viewport, **When** the conversion interface is displayed,
    **Then** HTML input appears in the left textarea pane and Markdown output
    appears in the right textarea pane.
+4. **Given** a mobile viewport, **When** the user toggles preview, **Then** the
+   fixed-header button label switches between `HTML` and `Markdown`.
 
 ---
 
@@ -135,6 +138,8 @@ output can be copied and pasted without format loss.
   changes using a 300ms debounce interval.
 - **FR-016**: System MUST NOT persist HTML input or Markdown output between page
   reloads in v1.
+- **FR-017**: System MUST provide the mobile preview toggle as a button whose
+  visible label switches between `HTML` and `Markdown` when toggled.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
