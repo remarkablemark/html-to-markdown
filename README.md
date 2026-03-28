@@ -1,4 +1,4 @@
-# html-to-markdown
+# HTML to Markdown
 
 [![build](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml)
 [![test](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml)
