@@ -29,6 +29,7 @@
 - Q: What performance target should we require for conversion updates after input changes? → A: No explicit timing target in v1
 - Q: How should the preview toggle behave on desktop? → A: Hide toggle on desktop; show only on mobile
 - Q: On first load with pre-filled sample HTML, what should happen to Markdown output? → A: Auto-convert sample immediately on load
+- Q: Should users be able to edit the Markdown output pane directly? → A: Read-only output pane
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -123,6 +124,8 @@ output can be copied and pasted without format loss.
     **Then** the preview toggle control is not shown.
 11. **Given** first load with pre-filled sample HTML, **When** the interface
     initializes, **Then** Markdown output is auto-generated from that sample.
+12. **Given** Markdown output is displayed, **When** the user interacts with the
+    output pane, **Then** the pane is read-only and cannot be directly edited.
 
 ---
 
@@ -196,6 +199,8 @@ output can be copied and pasted without format loss.
   single-pane layout and MUST hide it on desktop split-pane layout.
 - **FR-030**: System MUST auto-convert the default sample HTML on first load so
   Markdown output is populated immediately.
+- **FR-031**: System MUST present Markdown output in a read-only pane and MUST
+  NOT allow direct user edits to output content.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
