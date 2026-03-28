@@ -12,8 +12,8 @@ describe('App component', () => {
     });
     expect(heading).toBeInTheDocument();
 
-    const converterRegion = screen.getByRole('region', {
-      name: 'HTML to Markdown',
+    const converterRegion = screen.getByRole('textbox', {
+      name: 'HTML input',
     });
     expect(converterRegion).toBeInTheDocument();
   });

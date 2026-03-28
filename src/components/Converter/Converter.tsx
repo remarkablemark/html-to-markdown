@@ -53,11 +53,7 @@ export function Converter() {
   }
 
   return (
-    <section aria-labelledby="converter-heading" className="w-full space-y-6">
-      <h2 className="text-xl font-semibold" id="converter-heading">
-        HTML to Markdown
-      </h2>
-
+    <section className="w-full">
       <div className="grid gap-4 md:grid-cols-2">
         <label className="space-y-2" htmlFor="html-input">
           <span className="block text-sm font-medium">HTML input</span>
