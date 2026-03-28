@@ -164,7 +164,7 @@ output can be copied and pasted without format loss.
   unsupported elements.
 - **FR-007**: System MUST show a deterministic empty-output state when
   conversion yields empty Markdown: output pane remains blank, header `Copy`
-  button is disabled, and no additional error toast is shown.
+  button is disabled, and no additional error/invalid-input feedback message is shown.
 - **FR-008**: System MUST produce consistent output for equivalent input under
   the same conversion rules.
 - **FR-009**: System MUST remove `<script>` and `<style>` elements and their
@@ -248,9 +248,9 @@ output can be copied and pasted without format loss.
   output.
 - **SC-003**: At least 90% of users can complete the convert-and-copy workflow
   on their first attempt.
-- **SC-004**: For empty or non-meaningful input, 100% of applicable cases present
-  deterministic state-based feedback only (blank output and disabled `Copy` when
-  output is empty), with no additional failure toasts/messages in v1.
+- **SC-004**: For empty or non-meaningful input, 100% of applicable cases keep
+  deterministic silent state handling (blank output and disabled `Copy` when
+  output is empty), with no additional failure/invalid-input toasts or messages in v1.
 
 ## Assumptions
 

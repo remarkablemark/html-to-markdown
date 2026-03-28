@@ -124,34 +124,4 @@ describe('Converter component', () => {
       vi.useRealTimers();
     }
   });
-
-  it('shows feedback when user input produces no meaningful markdown output', () => {
-    vi.useFakeTimers();
-
-    try {
-      render(<Converter />);
-
-      const htmlInput = screen.getByRole('textbox', {
-        name: 'HTML input',
-      });
-
-      fireEvent.change(htmlInput, {
-        target: {
-          value: '<script>alert(1)</script>',
-        },
-      });
-
-      act(() => {
-        vi.advanceTimersByTime(300);
-      });
-
-      expect(
-        screen.getByText(
-          'No meaningful Markdown output could be generated from this input.',
-        ),
-      ).toBeInTheDocument();
-    } finally {
-      vi.useRealTimers();
-    }
-  });
 });

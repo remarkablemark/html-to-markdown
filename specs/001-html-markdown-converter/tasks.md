@@ -85,7 +85,7 @@
 - [x] T022 [US2] Implement unsupported-tag fallback rule set and deterministic ordering guarantees in `src/utils/convertHtmlToMarkdown.ts`
 - [x] T023 [US2] Implement malformed-input safe parsing flow and best-effort conversion path in `src/utils/convertHtmlToMarkdown.ts`
 - [x] T024 [US2] Apply sanitizer-before-conversion enforcement in converter pipeline calls in `src/components/Converter/Converter.tsx`
-- [x] T025 [US2] Implement empty/invalid input user feedback state for non-meaningful output in `src/components/Converter/Converter.tsx`
+- [x] T025 [US2] Ensure empty/invalid non-meaningful output remains silent (blank output, no extra feedback message) in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: User Stories 1 and 2 work independently with safe, resilient conversion behavior.
 
