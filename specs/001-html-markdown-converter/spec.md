@@ -20,6 +20,7 @@
 - Q: What debounce target should auto-conversion use? → A: 300ms debounce
 - Q: Should the app persist HTML/Markdown content between page reloads? → A: No persistence; clear on reload
 - Q: What accessibility behavior is required for the mobile preview toggle? → A: A button is sufficient; button text switches between HTML and Markdown
+- Q: Should v1 support input methods beyond paste/type? → A: Paste/type HTML only
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -140,6 +141,9 @@ output can be copied and pasted without format loss.
   reloads in v1.
 - **FR-017**: System MUST provide the mobile preview toggle as a button whose
   visible label switches between `HTML` and `Markdown` when toggled.
+- **FR-018**: System MUST accept HTML input via paste/type only in v1.
+- **FR-019**: System MUST treat HTML file upload and URL import as out of scope
+  for v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -177,6 +181,7 @@ output can be copied and pasted without format loss.
   batch-processing multiple documents.
 - The feature is expected to run in environments where users can paste or type
   HTML directly.
+- HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
 - Existing project quality gates and testing standards remain mandatory for this
