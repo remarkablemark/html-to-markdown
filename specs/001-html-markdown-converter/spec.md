@@ -31,6 +31,7 @@
 - Q: On first load with pre-filled sample HTML, what should happen to Markdown output? → A: Auto-convert sample immediately on load
 - Q: Should users be able to edit the Markdown output pane directly? → A: Read-only output pane
 - Q: How should the converter handle unsafe link/image URL schemes (e.g., `javascript:`)? → A: Allow only safe schemes (`http`, `https`, `mailto`) and remove others via sanitizer policy
+- Q: When HTML input changes (including becoming empty), how should output behave? → A: Output always updates to stay synchronized with current input
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -127,6 +128,10 @@ output can be copied and pasted without format loss.
     initializes, **Then** Markdown output is auto-generated from that sample.
 12. **Given** Markdown output is displayed, **When** the user interacts with the
     output pane, **Then** the pane is read-only and cannot be directly edited.
+13. **Given** HTML input changes, **When** conversion runs, **Then** Markdown
+    output updates to reflect the current input state.
+14. **Given** HTML input becomes empty, **When** conversion runs, **Then**
+    Markdown output is cleared.
 
 ---
 
@@ -205,6 +210,9 @@ output can be copied and pasted without format loss.
 - **FR-032**: System MUST allow only safe URL schemes (`http`, `https`,
   `mailto`) for link/image targets and remove unsafe schemes through the
   sanitizer policy.
+- **FR-033**: System MUST keep Markdown output synchronized with the latest HTML
+  input after each input change.
+- **FR-034**: System MUST clear Markdown output when HTML input is empty.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
