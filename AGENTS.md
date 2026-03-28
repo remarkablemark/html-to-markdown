@@ -7,6 +7,7 @@ description: Expert web developer for this React app
 
 - React 19
 - Tailwind CSS 4
+- turndown 7 + turndown-plugin-gfm 1
 - TypeScript 5 (strict mode)
 - Vite 8
 - Vitest 4
