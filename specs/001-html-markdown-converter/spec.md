@@ -24,6 +24,7 @@
 - Q: How should the copy button behave in the header? → A: Header copy button on both mobile and desktop; disabled when output empty
 - Q: What feedback should the header `Copy` button provide on click? → A: Change button label to `Copied` for 1–2 seconds
 - Q: What should the default HTML input be on first load? → A: Pre-filled sample HTML snippet including headings, bold, italic, inline code, unordered/ordered lists, link, image, blockquote, code block, table, hr, and checklist
+- Q: How should dark mode behavior work? → A: Follow system theme automatically only; use existing Tailwind `dark:` classes (no manual theme toggle)
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -108,6 +109,9 @@ output can be copied and pasted without format loss.
 7. **Given** Markdown output is copied successfully, **When** the user clicks
    the header `Copy` button, **Then** the button label changes to `Copied` for
    1–2 seconds before returning to `Copy`.
+8. **Given** the user has system dark mode enabled, **When** the interface is
+   loaded, **Then** the UI renders in dark mode automatically without a manual
+   theme switch.
 
 ---
 
@@ -170,6 +174,9 @@ output can be copied and pasted without format loss.
 - **FR-024**: System MUST ensure the default sample HTML includes examples of
   heading, bold, italic, inline code, unordered list, ordered list, link,
   image, blockquote, code block, table, horizontal rule, and checklist.
+- **FR-025**: System MUST follow the user's system theme preference
+  automatically for light/dark mode.
+- **FR-026**: System MUST NOT provide a manual theme override toggle in v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -209,6 +216,8 @@ output can be copied and pasted without format loss.
   batch-processing multiple documents.
 - The feature is expected to run in environments where users can paste or type
   HTML directly, with a default sample shown on first load.
+- Existing system dark mode support is already available and should be applied
+  using Tailwind `dark:` classes.
 - HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
