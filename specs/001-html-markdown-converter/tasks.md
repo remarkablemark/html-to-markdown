@@ -17,7 +17,7 @@
 
 **Purpose**: Project initialization and tooling updates required before feature implementation.
 
-- [ ] T001 Add conversion dependencies (`turndown`, `turndown-plugin-gfm`, `dompurify`) to `package.json`
+- [x] T001 Add conversion dependencies (`turndown`, `turndown-plugin-gfm`, `dompurify`) to `package.json`
 - [ ] T002 Create converter sample fixture covering required HTML elements in `src/components/App/sampleHtml.ts`
 - [ ] T003 [P] Add shared converter type interfaces (`SourceHtmlDocument`, `SanitizedHtmlDocument`, `MarkdownResult`, `ConversionRuleSet`) in `src/components/App/App.types.ts`
 - [ ] T004 [P] Add conversion constants for debounce, copy reset delay, and allowed URL schemes in `src/components/App/constants.ts`
