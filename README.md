@@ -1,8 +1,8 @@
-# vite-react-tailwind-template
+# html-to-markdown
 
-[![build](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/build.yml)
-[![test](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/remarkablemark/vite-react-tailwind-template/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/vite-react-tailwind-template)
+[![build](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml)
+[![test](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/remarkablemark/html-to-markdown/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/html-to-markdown)
 
 ⚡ Vite React Tailwind Template
 
@@ -11,8 +11,8 @@
 Clone the repository:
 
 ```sh
-git clone https://github.com/remarkablemark/vite-react-tailwind-template.git
-cd vite-react-tailwind-template
+git clone https://github.com/remarkablemark/html-to-markdown.git
+cd html-to-markdown
 ```
 
 Install the dependencies:
