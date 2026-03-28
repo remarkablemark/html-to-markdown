@@ -27,6 +27,7 @@
 - Q: How should dark mode behavior work? → A: Follow system theme automatically only; use existing Tailwind `dark:` classes (no manual theme toggle)
 - Q: How should the app handle copy failures (e.g., clipboard permission denied)? → A: No feedback; keep current state
 - Q: What performance target should we require for conversion updates after input changes? → A: No explicit timing target in v1
+- Q: How should the preview toggle behave on desktop? → A: Hide toggle on desktop; show only on mobile
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -117,6 +118,8 @@ output can be copied and pasted without format loss.
 9. **Given** clipboard copy fails, **When** the user clicks the header `Copy`
    button, **Then** the UI keeps the current button state with no additional
    failure feedback.
+10. **Given** a desktop viewport, **When** the split-pane layout is active,
+    **Then** the preview toggle control is not shown.
 
 ---
 
@@ -186,6 +189,8 @@ output can be copied and pasted without format loss.
   copy action fails and MUST NOT show additional failure feedback in v1.
 - **FR-028**: System MUST NOT require an explicit conversion latency timing
   target in v1.
+- **FR-029**: System MUST display the preview toggle control only on mobile
+  single-pane layout and MUST hide it on desktop split-pane layout.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
