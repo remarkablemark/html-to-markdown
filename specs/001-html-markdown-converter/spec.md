@@ -15,6 +15,7 @@
 - Q: How should large HTML inputs be handled? → A: No explicit limit; best effort always
 - Q: How should unsupported/custom HTML tags be handled? → A: Drop tag, keep inner text/content
 - Q: For browser deployment, what sanitizer approach should be used? → A: Browser-native sanitizer policy (e.g., DOMPurify)
+- Q: What mobile responsiveness behavior is required? → A: Mobile-first single textarea with fixed-header preview toggle; desktop split two-pane layout (HTML left, Markdown right)
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -78,6 +79,12 @@ output can be copied and pasted without format loss.
 
 1. **Given** conversion output is available, **When** the user copies Markdown,
    **Then** the copied content matches the displayed output exactly.
+2. **Given** a mobile viewport, **When** the user taps the fixed-header preview
+   toggle, **Then** the single textarea view switches between HTML input and
+   Markdown preview states.
+3. **Given** a desktop viewport, **When** the conversion interface is displayed,
+   **Then** HTML input appears in the left textarea pane and Markdown output
+   appears in the right textarea pane.
 
 ---
 
@@ -89,6 +96,7 @@ output can be copied and pasted without format loss.
 - Mixed inline and block elements with irregular nesting
 - HTML entities and escaped characters
 - Unsupported or custom tags
+- Viewport resize transitions between mobile single-pane and desktop split-pane
 
 ## Requirements _(mandatory)_
 
@@ -111,6 +119,12 @@ output can be copied and pasted without format loss.
   without enforcing a hard input size limit.
 - **FR-012**: System MUST drop unsupported/custom HTML tags while preserving
   their inner text/content in the Markdown output.
+- **FR-013**: System MUST implement a mobile-first layout where small screens
+  show one textarea view at a time with a fixed-header preview toggle to switch
+  between HTML input and Markdown preview.
+- **FR-014**: System MUST implement a desktop layout with two simultaneous
+  textarea panes where HTML input is on the left and Markdown output is on the
+  right.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
