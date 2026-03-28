@@ -30,12 +30,12 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/utils/sanitizeHtml.test.ts`
-- [ ] T006 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/utils/convertHtmlToMarkdown.test.ts`
-- [ ] T007 [P] Add debounce helper with timer reset support in `src/utils/debounce.ts`
-- [ ] T008 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/utils/sanitizeHtml.ts`
-- [ ] T009 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/utils/convertHtmlToMarkdown.ts`
-- [ ] T010 Integrate converter component exports in `src/components/Converter/index.ts`
+- [x] T005 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/utils/sanitizeHtml.test.ts`
+- [x] T006 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/utils/convertHtmlToMarkdown.test.ts`
+- [x] T007 [P] Add debounce helper with timer reset support in `src/utils/debounce.ts`
+- [x] T008 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/utils/sanitizeHtml.ts`
+- [x] T009 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/utils/convertHtmlToMarkdown.ts`
+- [x] T010 Integrate converter component exports in `src/components/Converter/index.ts`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
