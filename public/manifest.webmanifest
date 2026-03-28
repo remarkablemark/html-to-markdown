@@ -1,7 +1,7 @@
 {
-  "name": "Vite React Tailwind Template",
-  "short_name": "Vite React Tailwind Template",
-  "description": "Vite React Tailwind Template",
+  "name": "HTML to Markdown",
+  "short_name": "HTML to Markdown",
+  "description": "HTML to Markdown",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
