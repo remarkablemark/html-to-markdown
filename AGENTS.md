@@ -36,6 +36,7 @@ description: Expert web developer for this React app
 - **Error handling:** No console.log, try-catch async, error boundaries, type guards
 - **Testing:** TDD, 100% coverage thresholds, `@testing-library/react` + user-event, Vitest globals (no need to import from `vitest`)
 - **Quality:** No debugger, Prettier auto-format, TSDoc for public APIs
+- **Dot files:** Don't create or edit dot files unless explicitly requested
 
 ## File Structure
 
