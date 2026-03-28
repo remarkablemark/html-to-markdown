@@ -21,6 +21,8 @@
 - Q: Should the app persist HTML/Markdown content between page reloads? → A: No persistence; clear on reload
 - Q: What accessibility behavior is required for the mobile preview toggle? → A: A button is sufficient; button text switches between HTML and Markdown
 - Q: Should v1 support input methods beyond paste/type? → A: Paste/type HTML only
+- Q: How should the copy button behave in the header? → A: Header copy button on both mobile and desktop; disabled when output empty
+- Q: What feedback should the header `Copy` button provide on click? → A: Change button label to `Copied` for 1–2 seconds
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -94,6 +96,14 @@ output can be copied and pasted without format loss.
    appears in the right textarea pane.
 4. **Given** a mobile viewport, **When** the user toggles preview, **Then** the
    fixed-header button label switches between `HTML` and `Markdown`.
+5. **Given** Markdown output is available, **When** the interface is shown,
+   **Then** a `Copy` button is present in the fixed header on both mobile and
+   desktop.
+6. **Given** Markdown output is empty, **When** the interface is shown, **Then**
+   the header `Copy` button is disabled.
+7. **Given** Markdown output is copied successfully, **When** the user clicks
+   the header `Copy` button, **Then** the button label changes to `Copied` for
+   1–2 seconds before returning to `Copy`.
 
 ---
 
@@ -144,6 +154,12 @@ output can be copied and pasted without format loss.
 - **FR-018**: System MUST accept HTML input via paste/type only in v1.
 - **FR-019**: System MUST treat HTML file upload and URL import as out of scope
   for v1.
+- **FR-020**: System MUST provide a `Copy` button in the fixed header on both
+  mobile and desktop layouts.
+- **FR-021**: System MUST disable the header `Copy` button when Markdown output
+  is empty.
+- **FR-022**: System MUST change the header `Copy` button label to `Copied` for
+  1–2 seconds after a successful copy action.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
