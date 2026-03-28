@@ -30,6 +30,7 @@
 - Q: How should the preview toggle behave on desktop? → A: Hide toggle on desktop; show only on mobile
 - Q: On first load with pre-filled sample HTML, what should happen to Markdown output? → A: Auto-convert sample immediately on load
 - Q: Should users be able to edit the Markdown output pane directly? → A: Read-only output pane
+- Q: How should the converter handle unsafe link/image URL schemes (e.g., `javascript:`)? → A: Allow only safe schemes (`http`, `https`, `mailto`) and remove others via sanitizer policy
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -201,6 +202,9 @@ output can be copied and pasted without format loss.
   Markdown output is populated immediately.
 - **FR-031**: System MUST present Markdown output in a read-only pane and MUST
   NOT allow direct user edits to output content.
+- **FR-032**: System MUST allow only safe URL schemes (`http`, `https`,
+  `mailto`) for link/image targets and remove unsafe schemes through the
+  sanitizer policy.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -242,6 +246,7 @@ output can be copied and pasted without format loss.
   HTML directly, with a default sample shown on first load.
 - Existing system dark mode support is already available and should be applied
   using Tailwind `dark:` classes.
+- URL scheme safety filtering is enforced through configured sanitizer policy.
 - HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
