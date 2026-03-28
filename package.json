@@ -1,7 +1,6 @@
 {
   "name": "html-to-markdown",
   "private": true,
-  "version": "1.0.0-alpha",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
