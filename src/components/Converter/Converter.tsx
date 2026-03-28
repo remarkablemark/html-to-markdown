@@ -25,6 +25,10 @@ export function Converter() {
     buildMarkdownResult(INITIAL_SOURCE_HTML_DOCUMENT.rawHtml),
   );
   const debouncedConvertRef = useRef<DebouncedFunction<[string]> | null>(null);
+  const showNonMeaningfulOutputFeedback =
+    sourceHtmlDocument.origin === 'user' &&
+    sourceHtmlDocument.rawHtml.trim().length > 0 &&
+    markdownResult.isEmpty;
 
   debouncedConvertRef.current ??= debounce((rawHtml: string) => {
     setMarkdownResult(buildMarkdownResult(rawHtml));
@@ -75,6 +79,14 @@ export function Converter() {
             readOnly
             value={markdownResult.markdown}
           />
+          {showNonMeaningfulOutputFeedback ? (
+            <p
+              className="text-sm text-slate-600 dark:text-slate-300"
+              role="status"
+            >
+              No meaningful Markdown output could be generated from this input.
+            </p>
+          ) : null}
         </label>
       </div>
     </section>

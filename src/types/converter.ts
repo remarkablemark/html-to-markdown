@@ -13,7 +13,6 @@ export interface SanitizedHtmlDocument {
 export interface MarkdownResult {
   markdown: string;
   isEmpty: boolean;
-  convertedAtMs: number;
 }
 
 export interface ConversionRuleSet {

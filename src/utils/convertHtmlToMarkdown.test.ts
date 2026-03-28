@@ -53,6 +53,36 @@ describe('convertHtmlToMarkdown', () => {
     expect(result.markdown).not.toContain('custom-widget');
   });
 
+  it('converts malformed HTML with best-effort output without throwing', () => {
+    const malformedHtml =
+      '<section><h2>Broken <em>Heading<p>Paragraph <strong>one<div>Line two';
+
+    expect(() => convertHtmlToMarkdown(malformedHtml)).not.toThrow();
+
+    const result = convertHtmlToMarkdown(malformedHtml);
+    expect(result.isEmpty).toBe(false);
+    expect(result.markdown).toContain('Broken');
+    expect(result.markdown).toContain('Paragraph');
+    expect(result.markdown).toContain('Line two');
+  });
+
+  it('drops unsupported custom tags while preserving ordered inner content', () => {
+    const result = convertHtmlToMarkdown(
+      [
+        '<custom-shell><p>First block</p></custom-shell>',
+        '<x-article>Second <strong>value</strong></x-article>',
+      ].join(''),
+    );
+
+    expect(result.markdown).toContain('First block');
+    expect(result.markdown).toContain('Second **value**');
+    expect(result.markdown).not.toContain('custom-shell');
+    expect(result.markdown).not.toContain('x-article');
+    expect(result.markdown.indexOf('First block')).toBeLessThan(
+      result.markdown.indexOf('Second **value**'),
+    );
+  });
+
   it('handles non-element nodes without throwing', () => {
     const result = convertHtmlToMarkdown('<!-- comment --><p>Content</p>');
 

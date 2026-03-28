@@ -75,17 +75,17 @@
 
 ### Tests for User Story 2 (REQUIRED) ⚠️
 
-- [ ] T018 [P] [US2] Add conversion service tests for malformed HTML best-effort behavior in `src/utils/convertHtmlToMarkdown.test.ts`
-- [ ] T019 [P] [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in `src/utils/convertHtmlToMarkdown.test.ts`
-- [ ] T020 [P] [US2] Add sanitizer tests confirming `<script>`/`<style>` removal with contents and URL scheme filtering in `src/utils/sanitizeHtml.test.ts`
-- [ ] T021 [P] [US2] Add converter integration test verifying resilient rendering for malformed HTML input in `src/components/Converter/Converter.test.tsx`
+- [x] T018 [P] [US2] Add conversion service tests for malformed HTML best-effort behavior in `src/utils/convertHtmlToMarkdown.test.ts`
+- [x] T019 [P] [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in `src/utils/convertHtmlToMarkdown.test.ts`
+- [x] T020 [P] [US2] Add sanitizer tests confirming `<script>`/`<style>` removal with contents and URL scheme filtering in `src/utils/sanitizeHtml.test.ts`
+- [x] T021 [P] [US2] Add converter integration test verifying resilient rendering for malformed HTML input in `src/components/Converter/Converter.test.tsx`
 
 ### Implementation for User Story 2
 
-- [ ] T022 [US2] Implement unsupported-tag fallback rule set and deterministic ordering guarantees in `src/utils/convertHtmlToMarkdown.ts`
-- [ ] T023 [US2] Implement malformed-input safe parsing flow and best-effort conversion path in `src/utils/convertHtmlToMarkdown.ts`
-- [ ] T024 [US2] Apply sanitizer-before-conversion enforcement in converter pipeline calls in `src/components/Converter/Converter.tsx`
-- [ ] T025 [US2] Implement empty/invalid input user feedback state for non-meaningful output in `src/components/Converter/Converter.tsx`
+- [x] T022 [US2] Implement unsupported-tag fallback rule set and deterministic ordering guarantees in `src/utils/convertHtmlToMarkdown.ts`
+- [x] T023 [US2] Implement malformed-input safe parsing flow and best-effort conversion path in `src/utils/convertHtmlToMarkdown.ts`
+- [x] T024 [US2] Apply sanitizer-before-conversion enforcement in converter pipeline calls in `src/components/Converter/Converter.tsx`
+- [x] T025 [US2] Implement empty/invalid input user feedback state for non-meaningful output in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: User Stories 1 and 2 work independently with safe, resilient conversion behavior.
 

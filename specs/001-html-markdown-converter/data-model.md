@@ -34,7 +34,6 @@ This feature is client-side and does not persist data. The model documents in-me
 - Fields:
   - `markdown: string` - converted output (GFM target).
   - `isEmpty: boolean` - convenience flag (`markdown.length === 0`).
-  - `convertedAtMs: number` - timestamp of last successful conversion pass.
 - Validation rules:
   - Must preserve text order from source input.
   - Unsupported/custom tags must not appear as raw unsupported wrappers; inner text must be preserved.

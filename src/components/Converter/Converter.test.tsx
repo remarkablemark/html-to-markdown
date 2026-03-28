@@ -89,4 +89,69 @@ describe('Converter component', () => {
       vi.useRealTimers();
     }
   });
+
+  it('renders resilient output for malformed HTML input without crashing', () => {
+    vi.useFakeTimers();
+
+    try {
+      render(<Converter />);
+
+      const htmlInput = screen.getByRole('textbox', {
+        name: 'HTML input',
+      });
+      const markdownOutput = screen.getByRole('textbox', {
+        name: 'Markdown output',
+      });
+      const malformedHtml =
+        '<article><h3>Broken <em>heading<p>Body <strong>text<div>Tail';
+
+      fireEvent.change(htmlInput, {
+        target: {
+          value: malformedHtml,
+        },
+      });
+
+      act(() => {
+        vi.advanceTimersByTime(300);
+      });
+
+      expect(markdownOutput).toHaveValue(getExpectedMarkdown(malformedHtml));
+      const markdownValue = (markdownOutput as HTMLTextAreaElement).value;
+      expect(markdownValue).toContain('Broken');
+      expect(markdownValue).toContain('Body');
+      expect(markdownValue).toContain('Tail');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('shows feedback when user input produces no meaningful markdown output', () => {
+    vi.useFakeTimers();
+
+    try {
+      render(<Converter />);
+
+      const htmlInput = screen.getByRole('textbox', {
+        name: 'HTML input',
+      });
+
+      fireEvent.change(htmlInput, {
+        target: {
+          value: '<script>alert(1)</script>',
+        },
+      });
+
+      act(() => {
+        vi.advanceTimersByTime(300);
+      });
+
+      expect(
+        screen.getByText(
+          'No meaningful Markdown output could be generated from this input.',
+        ),
+      ).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });

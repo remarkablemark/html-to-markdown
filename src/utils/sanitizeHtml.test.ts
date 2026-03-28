@@ -54,4 +54,25 @@ describe('sanitizeHtml', () => {
     expect(result.sanitizedHtml).not.toContain('/relative-path');
     expect(result.removedUnsafeAttrs).toBe(true);
   });
+
+  it('removes unsafe payload content and keeps allowed URL schemes only', () => {
+    const result = sanitizeHtml(
+      [
+        '<style>.hidden{display:none;}</style>',
+        '<script>window.evil = true</script>',
+        '<a href="http://example.com">Allowed http</a>',
+        '<a href="https://example.com">Allowed https</a>',
+        '<a href="mailto:test@example.com">Allowed mailto</a>',
+        '<a href="javascript:alert(1)">Blocked js</a>',
+      ].join(''),
+    );
+
+    expect(result.sanitizedHtml).not.toContain('.hidden{display:none;}');
+    expect(result.sanitizedHtml).not.toContain('window.evil = true');
+    expect(result.sanitizedHtml).toContain('http://example.com');
+    expect(result.sanitizedHtml).toContain('https://example.com');
+    expect(result.sanitizedHtml).toContain('mailto:test@example.com');
+    expect(result.sanitizedHtml).not.toContain('javascript:alert(1)');
+    expect(result.removedScriptStyle).toBe(true);
+  });
 });

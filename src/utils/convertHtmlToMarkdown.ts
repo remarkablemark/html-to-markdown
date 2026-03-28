@@ -56,25 +56,37 @@ turndownService.addRule('dropUnsupportedTagsKeepContent', {
   replacement: (content): string => content,
 });
 
-export function convertHtmlToMarkdown(html: string): MarkdownResult {
-  const convertedAtMs = Date.now();
+function normalizeHtmlForConversion(html: string): string {
+  const parsedDocument = new DOMParser().parseFromString(html, 'text/html');
+  return parsedDocument.body.innerHTML;
+}
 
-  if (html.trim().length === 0) {
+export function convertHtmlToMarkdown(html: string): MarkdownResult {
+  const trimmedHtml = html.trim();
+
+  if (!trimmedHtml.length) {
     return {
       markdown: '',
       isEmpty: true,
-      convertedAtMs,
     };
   }
 
-  const markdown = turndownService
-    .turndown(html)
-    .replace(/\n{3,}/gu, '\n\n')
-    .trim();
+  try {
+    const normalizedHtml = normalizeHtmlForConversion(trimmedHtml);
+    const markdown = turndownService
+      .turndown(normalizedHtml)
+      .replace(/\n{3,}/gu, '\n\n')
+      .trim();
 
-  return {
-    markdown,
-    isEmpty: markdown.length === 0,
-    convertedAtMs,
-  };
+    return {
+      markdown,
+      isEmpty: !markdown.length,
+    };
+  } catch {
+    /* v8 ignore next */
+    return {
+      markdown: '',
+      isEmpty: true,
+    };
+  }
 }
