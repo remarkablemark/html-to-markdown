@@ -51,17 +51,17 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US1] Add converter integration test for prefilled sample and immediate initial conversion in `src/components/Converter/Converter.test.tsx`
-- [ ] T012 [P] [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in `src/components/Converter/Converter.test.tsx`
-- [ ] T013 [P] [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in `src/components/Converter/Converter.test.tsx`
-- [ ] T047 [P] [US1] Add sample fixture completeness test asserting heading/bold/italic/inline code/unordered list/ordered list/link/image/blockquote/code block/table/hr/checklist coverage in `src/constants/sampleHtml.test.ts`
+- [x] T011 [P] [US1] Add converter integration test for prefilled sample and immediate initial conversion in `src/components/Converter/Converter.test.tsx`
+- [x] T012 [P] [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in `src/components/Converter/Converter.test.tsx`
+- [x] T013 [P] [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in `src/components/Converter/Converter.test.tsx`
+- [x] T047 [P] [US1] Add sample fixture completeness test asserting heading/bold/italic/inline code/unordered list/ordered list/link/image/blockquote/code block/table/hr/checklist coverage in `src/constants/sampleHtml.test.ts`
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] Implement HTML input state and source metadata (`rawHtml`, `origin`, `updatedAtMs`) in `src/components/Converter/Converter.tsx`
-- [ ] T015 [US1] Implement first-load sample initialization and immediate conversion flow in `src/components/Converter/Converter.tsx`
-- [ ] T016 [US1] Implement debounced conversion trigger (300ms) and synchronized Markdown state updates in `src/components/Converter/Converter.tsx`
-- [ ] T017 [US1] Implement read-only Markdown output pane rendering and semantic labels in `src/components/Converter/Converter.tsx`
+- [x] T014 [US1] Implement HTML input state and source metadata (`rawHtml`, `origin`, `updatedAtMs`) in `src/components/Converter/Converter.tsx`
+- [x] T015 [US1] Implement first-load sample initialization and immediate conversion flow in `src/components/Converter/Converter.tsx`
+- [x] T016 [US1] Implement debounced conversion trigger (300ms) and synchronized Markdown state updates in `src/components/Converter/Converter.tsx`
+- [x] T017 [US1] Implement read-only Markdown output pane rendering and semantic labels in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: User Story 1 is functional and independently testable.
 

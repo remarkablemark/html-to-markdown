@@ -1,17 +1,92 @@
-import { render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { SAMPLE_HTML } from 'src/constants/sampleHtml';
+import { convertHtmlToMarkdown } from 'src/utils/convertHtmlToMarkdown';
+import { sanitizeHtml } from 'src/utils/sanitizeHtml';
 
 import { Converter } from '.';
 
-describe('Converter component', () => {
-  it('renders heading and container', () => {
-    const { container } = render(<Converter />);
+function getExpectedMarkdown(rawHtml: string): string {
+  return convertHtmlToMarkdown(sanitizeHtml(rawHtml).sanitizedHtml).markdown;
+}
 
-    const heading = screen.getByRole('heading', {
-      level: 2,
-      name: 'HTML to Markdown',
+describe('Converter component', () => {
+  it('prefills sample HTML and immediately renders converted Markdown', () => {
+    render(<Converter />);
+
+    const htmlInput = screen.getByRole('textbox', {
+      name: 'HTML input',
+    });
+    const markdownOutput = screen.getByRole('textbox', {
+      name: 'Markdown output',
     });
 
-    expect(heading).toBeInTheDocument();
-    expect(container.querySelector('section')).toBeInTheDocument();
+    expect(htmlInput).toHaveValue(SAMPLE_HTML);
+    expect(markdownOutput).toHaveValue(getExpectedMarkdown(SAMPLE_HTML));
+    expect(markdownOutput).toHaveAttribute('readonly');
+  });
+
+  it('updates Markdown output after 300ms debounce when HTML input changes', () => {
+    vi.useFakeTimers();
+
+    try {
+      render(<Converter />);
+
+      const htmlInput = screen.getByRole('textbox', {
+        name: 'HTML input',
+      });
+      const markdownOutput = screen.getByRole('textbox', {
+        name: 'Markdown output',
+      });
+      const initialMarkdown = getExpectedMarkdown(SAMPLE_HTML);
+      const updatedHtml = '<h2>Updated Heading</h2><p>Updated paragraph</p>';
+
+      fireEvent.change(htmlInput, {
+        target: {
+          value: updatedHtml,
+        },
+      });
+
+      expect(markdownOutput).toHaveValue(initialMarkdown);
+
+      act(() => {
+        vi.advanceTimersByTime(299);
+      });
+      expect(markdownOutput).toHaveValue(initialMarkdown);
+
+      act(() => {
+        vi.advanceTimersByTime(1);
+      });
+      expect(markdownOutput).toHaveValue(getExpectedMarkdown(updatedHtml));
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('clears Markdown output when input is empty or whitespace only', () => {
+    vi.useFakeTimers();
+
+    try {
+      render(<Converter />);
+
+      const htmlInput = screen.getByRole('textbox', {
+        name: 'HTML input',
+      });
+      const markdownOutput = screen.getByRole('textbox', {
+        name: 'Markdown output',
+      });
+
+      fireEvent.change(htmlInput, {
+        target: {
+          value: '   ',
+        },
+      });
+
+      act(() => {
+        vi.advanceTimersByTime(300);
+      });
+      expect(markdownOutput).toHaveValue('');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

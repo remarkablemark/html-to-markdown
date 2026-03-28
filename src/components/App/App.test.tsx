@@ -1,32 +1,34 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 import { App } from '.';
 
 describe('App component', () => {
-  it('renders without crashing', () => {
+  it('renders app heading and converter section', () => {
     render(<App />);
 
-    const heading = screen.getByRole('heading', { level: 1 });
+    const heading = screen.getByRole('heading', {
+      level: 1,
+      name: 'HTML to Markdown',
+    });
     expect(heading).toBeInTheDocument();
 
-    const button = screen.getByRole('button', { name: /count is 0/i });
-    expect(button).toBeInTheDocument();
-
-    const images = screen.getAllByRole('img');
-    expect(images).toHaveLength(3);
+    const converterRegion = screen.getByRole('region', {
+      name: 'HTML to Markdown',
+    });
+    expect(converterRegion).toBeInTheDocument();
   });
 
-  it('button click increments count', async () => {
-    const user = userEvent.setup();
+  it('renders HTML input and read-only Markdown output', () => {
     render(<App />);
 
-    const button = screen.getByRole('button', { name: /count is 0/i });
+    const htmlInput = screen.getByRole('textbox', {
+      name: 'HTML input',
+    });
+    expect(htmlInput).toBeInTheDocument();
 
-    await user.click(button);
-    expect(button).toHaveTextContent('count is 1');
-
-    await user.click(button);
-    expect(button).toHaveTextContent('count is 2');
+    const markdownOutput = screen.getByRole('textbox', {
+      name: 'Markdown output',
+    });
+    expect(markdownOutput).toHaveAttribute('readonly');
   });
 });
