@@ -5,6 +5,17 @@
 **Status**: Draft  
 **Input**: User description: "HTML to Markdown converter"
 
+## Clarifications
+
+### Session 2026-03-28
+
+- Q: Which Markdown flavor should be the required output target? → A: GitHub Flavored Markdown (GFM)
+- Q: For HTML `<script>` and `<style>` tags, what should the converter do? → A: Remove tag and its contents entirely
+- Q: What sanitization policy should the converter require? → A: Sanitize before conversion; remove unsafe tags/attributes
+- Q: How should large HTML inputs be handled? → A: No explicit limit; best effort always
+- Q: How should unsupported/custom HTML tags be handled? → A: Drop tag, keep inner text/content
+- Q: For browser deployment, what sanitizer approach should be used? → A: Browser-native sanitizer policy (e.g., DOMPurify)
+
 ## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Convert HTML into Markdown (Priority: P1)
@@ -74,7 +85,7 @@ output can be copied and pasted without format loss.
 
 - Empty or whitespace-only HTML input
 - Very large HTML input content
-- HTML containing embedded script/style blocks
+- HTML containing embedded script/style blocks (must be removed with contents)
 - Mixed inline and block elements with irregular nesting
 - HTML entities and escaped characters
 - Unsupported or custom tags
@@ -84,7 +95,7 @@ output can be copied and pasted without format loss.
 ### Functional Requirements
 
 - **FR-001**: System MUST allow users to provide HTML input for conversion.
-- **FR-002**: System MUST generate Markdown output that preserves semantic intent
+- **FR-002**: System MUST generate GitHub Flavored Markdown (GFM) output that preserves semantic intent
   for common HTML structures including headings, paragraphs, emphasis, links,
   lists, quotes, images, and code.
 - **FR-003**: System MUST preserve textual content order from input to output.
@@ -92,6 +103,14 @@ output can be copied and pasted without format loss.
   termination and return best-effort Markdown output.
 - **FR-005**: System MUST define and apply deterministic fallback behavior for
   unsupported elements.
+- **FR-009**: System MUST remove `<script>` and `<style>` elements and their
+  contents from conversion output.
+- **FR-010**: System MUST sanitize input before conversion by removing unsafe
+  elements and attributes using a browser-safe sanitization policy.
+- **FR-011**: System MUST attempt best-effort conversion for large inputs
+  without enforcing a hard input size limit.
+- **FR-012**: System MUST drop unsupported/custom HTML tags while preserving
+  their inner text/content in the Markdown output.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -129,6 +148,8 @@ output can be copied and pasted without format loss.
   batch-processing multiple documents.
 - The feature is expected to run in environments where users can paste or type
   HTML directly.
+- Large input handling follows best-effort conversion without a hard rejection
+  threshold in this version.
 - Existing project quality gates and testing standards remain mandatory for this
   feature.
 
