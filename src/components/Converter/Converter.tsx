@@ -8,7 +8,12 @@ import { sanitizeHtml } from 'src/utils/sanitizeHtml';
 
 function buildMarkdownResult(rawHtml: string): MarkdownResult {
   const sanitized = sanitizeHtml(rawHtml);
-  return convertHtmlToMarkdown(sanitized.sanitizedHtml);
+  const markdown = convertHtmlToMarkdown(sanitized.sanitizedHtml);
+
+  return {
+    markdown,
+    isEmpty: !markdown.length,
+  };
 }
 
 const INITIAL_SOURCE_HTML_DOCUMENT: SourceHtmlDocument = {

@@ -6,7 +6,7 @@ import { sanitizeHtml } from 'src/utils/sanitizeHtml';
 import { Converter } from '.';
 
 function getExpectedMarkdown(rawHtml: string): string {
-  return convertHtmlToMarkdown(sanitizeHtml(rawHtml).sanitizedHtml).markdown;
+  return convertHtmlToMarkdown(sanitizeHtml(rawHtml).sanitizedHtml);
 }
 
 describe('Converter component', () => {

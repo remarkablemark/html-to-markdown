@@ -6,42 +6,36 @@ describe('convertHtmlToMarkdown', () => {
     const emptyResult = convertHtmlToMarkdown('');
     const whitespaceResult = convertHtmlToMarkdown('   \n\t   ');
 
-    expect(emptyResult.markdown).toBe('');
-    expect(emptyResult.isEmpty).toBe(true);
-    expect(whitespaceResult.markdown).toBe('');
-    expect(whitespaceResult.isEmpty).toBe(true);
+    expect(emptyResult).toBe('');
+    expect(whitespaceResult).toBe('');
   });
 
   it('returns deterministic output for equivalent input', () => {
     const first = convertHtmlToMarkdown(SAMPLE_HTML);
     const second = convertHtmlToMarkdown(SAMPLE_HTML);
 
-    expect(first.markdown).toBe(second.markdown);
-    expect(first.isEmpty).toBe(false);
-    expect(second.isEmpty).toBe(false);
+    expect(first).toBe(second);
+    expect(first.length).toBeGreaterThan(0);
+    expect(second.length).toBeGreaterThan(0);
   });
 
   it('maps required supported HTML elements to Markdown', () => {
     const result = convertHtmlToMarkdown(SAMPLE_HTML);
 
-    expect(result.markdown).toContain('# Heading');
-    expect(result.markdown).toContain('**bold**');
-    expect(result.markdown).toContain('_italic_');
-    expect(result.markdown).toContain('`inline code`');
-    expect(result.markdown).toMatch(/-\s+Unordered item one/u);
-    expect(result.markdown).toContain('1.  Ordered item one');
-    expect(result.markdown).toContain('[Example](https://example.com)');
-    expect(result.markdown).toContain(
-      '![Sample image](https://picsum.photos/100)',
-    );
-    expect(result.markdown).toContain(
-      '> Conversion should preserve semantic meaning.',
-    );
-    expect(result.markdown).toContain('```ts');
-    expect(result.markdown).toContain('| Feature | Status |');
-    expect(result.markdown).toContain('---');
-    expect(result.markdown).toMatch(/-\s+\[x\]\s+Completed checklist item/u);
-    expect(result.markdown).toMatch(/-\s+\[\s\]\s+Pending checklist item/u);
+    expect(result).toContain('# Heading');
+    expect(result).toContain('**bold**');
+    expect(result).toContain('_italic_');
+    expect(result).toContain('`inline code`');
+    expect(result).toMatch(/-\s+Unordered item one/u);
+    expect(result).toContain('1.  Ordered item one');
+    expect(result).toContain('[Example](https://example.com)');
+    expect(result).toContain('![Sample image](https://picsum.photos/100)');
+    expect(result).toContain('> Conversion should preserve semantic meaning.');
+    expect(result).toContain('```ts');
+    expect(result).toContain('| Feature | Status |');
+    expect(result).toContain('---');
+    expect(result).toMatch(/-\s+\[x\]\s+Completed checklist item/u);
+    expect(result).toMatch(/-\s+\[\s\]\s+Pending checklist item/u);
   });
 
   it('drops unsupported wrappers while preserving inner content', () => {
@@ -49,8 +43,8 @@ describe('convertHtmlToMarkdown', () => {
       '<custom-widget>Keep this text</custom-widget>',
     );
 
-    expect(result.markdown).toContain('Keep this text');
-    expect(result.markdown).not.toContain('custom-widget');
+    expect(result).toContain('Keep this text');
+    expect(result).not.toContain('custom-widget');
   });
 
   it('converts malformed HTML with best-effort output without throwing', () => {
@@ -60,10 +54,10 @@ describe('convertHtmlToMarkdown', () => {
     expect(() => convertHtmlToMarkdown(malformedHtml)).not.toThrow();
 
     const result = convertHtmlToMarkdown(malformedHtml);
-    expect(result.isEmpty).toBe(false);
-    expect(result.markdown).toContain('Broken');
-    expect(result.markdown).toContain('Paragraph');
-    expect(result.markdown).toContain('Line two');
+    expect(result.length).toBeGreaterThan(0);
+    expect(result).toContain('Broken');
+    expect(result).toContain('Paragraph');
+    expect(result).toContain('Line two');
   });
 
   it('drops unsupported custom tags while preserving ordered inner content', () => {
@@ -74,18 +68,18 @@ describe('convertHtmlToMarkdown', () => {
       ].join(''),
     );
 
-    expect(result.markdown).toContain('First block');
-    expect(result.markdown).toContain('Second **value**');
-    expect(result.markdown).not.toContain('custom-shell');
-    expect(result.markdown).not.toContain('x-article');
-    expect(result.markdown.indexOf('First block')).toBeLessThan(
-      result.markdown.indexOf('Second **value**'),
+    expect(result).toContain('First block');
+    expect(result).toContain('Second **value**');
+    expect(result).not.toContain('custom-shell');
+    expect(result).not.toContain('x-article');
+    expect(result.indexOf('First block')).toBeLessThan(
+      result.indexOf('Second **value**'),
     );
   });
 
   it('handles non-element nodes without throwing', () => {
     const result = convertHtmlToMarkdown('<!-- comment --><p>Content</p>');
 
-    expect(result.markdown).toContain('Content');
+    expect(result).toContain('Content');
   });
 });

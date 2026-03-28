@@ -1,8 +1,6 @@
 import TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
 
-import type { MarkdownResult } from '../types/converter';
-
 const SUPPORTED_ELEMENT_NAMES = new Set([
   'a',
   'blockquote',
@@ -61,14 +59,11 @@ function normalizeHtmlForConversion(html: string): string {
   return parsedDocument.body.innerHTML;
 }
 
-export function convertHtmlToMarkdown(html: string): MarkdownResult {
+export function convertHtmlToMarkdown(html: string): string {
   const trimmedHtml = html.trim();
 
   if (!trimmedHtml.length) {
-    return {
-      markdown: '',
-      isEmpty: true,
-    };
+    return '';
   }
 
   try {
@@ -78,15 +73,9 @@ export function convertHtmlToMarkdown(html: string): MarkdownResult {
       .replace(/\n{3,}/gu, '\n\n')
       .trim();
 
-    return {
-      markdown,
-      isEmpty: !markdown.length,
-    };
+    return markdown;
   } catch {
     /* v8 ignore next */
-    return {
-      markdown: '',
-      isEmpty: true,
-    };
+    return '';
   }
 }
