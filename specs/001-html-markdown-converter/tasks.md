@@ -126,6 +126,11 @@
 - [ ] T039 Run `npm run lint:tsc` and resolve type errors in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
 - [ ] T040 Run `npm run test:ci` and confirm coverage thresholds for converter tests in `src/components/Converter/`, `src/components/ConverterHeader/`, and `src/utils/`
 - [ ] T041 Run `npm run build` and verify production output generated in `dist/`
+- [ ] T042 [P] Add representative HTML fixture suite (>=20 samples) in `src/utils/__fixtures__/representativeHtmlSamples.ts`
+- [ ] T043 Add conversion accuracy regression test asserting >=95% sample pass rate in `src/utils/convertHtmlToMarkdown.representative.test.ts`
+- [ ] T044 [P] Add integration test verifying reload clears input/output session state in `src/components/Converter/Converter.persistence.test.tsx`
+- [ ] T045 [P] Add UI scope test verifying no file upload or URL import controls are rendered in `src/components/Converter/Converter.inputScope.test.tsx`
+- [ ] T046 [P] Add unit test ensuring conversion pipeline performs no network/API calls in `src/utils/convertHtmlToMarkdown.clientOnly.test.ts`
 
 ---
 
@@ -149,7 +154,7 @@
 ### Within Each User Story
 
 - Tests must be written first and fail before implementation.
-- Conversion/sanitization logic updates before App UI wiring that consumes them.
+- Conversion/sanitization logic updates before component UI wiring that consumes them.
 - App behavior implementation before final refactors.
 
 ### Parallel Opportunities
@@ -160,6 +165,7 @@
 - US2 tests `T018`-`T021` can run in parallel.
 - US3 tests `T026`-`T030` can run in parallel.
 - Polish doc tasks `T036` and `T037` can run in parallel.
+- Coverage tasks `T042`, `T044`, `T045`, and `T046` can run in parallel.
 
 ---
 
@@ -204,7 +210,7 @@ Task: "T029 [US3] Add header action integration test for successful copy label t
 2. Deliver US1 (`T011`-`T017`) and validate.
 3. Deliver US2 (`T018`-`T025`) and validate.
 4. Deliver US3 (`T026`-`T035`) and validate.
-5. Finish polish and quality gates (`T036`-`T041`).
+5. Finish polish and quality gates (`T036`-`T046`).
 
 ### Parallel Team Strategy
 

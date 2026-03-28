@@ -218,9 +218,9 @@ output can be copied and pasted without format loss.
   client-side in the browser.
 - **FR-036**: System MUST NOT require any server/API calls for conversion in
   v1.
-- **FR-006**: System MUST provide a way for users to copy conversion output.
-- **FR-007**: System MUST provide clear feedback when conversion cannot produce
-  meaningful output (for example, empty input).
+- **FR-007**: System MUST show a deterministic empty-output state when
+  conversion yields empty Markdown: output pane remains blank, header `Copy`
+  button is disabled, and no additional error toast is shown.
 - **FR-008**: System MUST produce consistent output for equivalent input under
   the same conversion rules.
 
