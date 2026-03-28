@@ -2,7 +2,7 @@
 
 [![build](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/build.yml)
 [![test](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/html-to-markdown/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/remarkablemark/html-to-markdown/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/html-to-markdown)
+[![codecov](https://codecov.io/gh/remarkablemark/html-to-markdown/graph/badge.svg?token=8pDIo6W6bX)](https://codecov.io/gh/remarkablemark/html-to-markdown)
 
 📝 Convert HTML to Markdown:
 
