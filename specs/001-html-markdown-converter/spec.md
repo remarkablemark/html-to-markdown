@@ -32,6 +32,7 @@
 - Q: Should users be able to edit the Markdown output pane directly? → A: Read-only output pane
 - Q: How should the converter handle unsafe link/image URL schemes (e.g., `javascript:`)? → A: Allow only safe schemes (`http`, `https`, `mailto`) and remove others via sanitizer policy
 - Q: When HTML input changes (including becoming empty), how should output behave? → A: Output always updates to stay synchronized with current input
+- Q: Where should conversion execution occur in v1? → A: Client-side only; static website with no server/API
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -213,6 +214,10 @@ output can be copied and pasted without format loss.
 - **FR-033**: System MUST keep Markdown output synchronized with the latest HTML
   input after each input change.
 - **FR-034**: System MUST clear Markdown output when HTML input is empty.
+- **FR-035**: System MUST execute HTML-to-Markdown conversion entirely
+  client-side in the browser.
+- **FR-036**: System MUST NOT require any server/API calls for conversion in
+  v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
@@ -255,6 +260,7 @@ output can be copied and pasted without format loss.
 - Existing system dark mode support is already available and should be applied
   using Tailwind `dark:` classes.
 - URL scheme safety filtering is enforced through configured sanitizer policy.
+- The product is a static website deployment with no server runtime.
 - HTML file upload and URL import are excluded from v1 scope.
 - Large input handling follows best-effort conversion without a hard rejection
   threshold in this version.
