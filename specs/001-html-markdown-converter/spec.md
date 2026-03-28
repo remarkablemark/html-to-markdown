@@ -18,6 +18,7 @@
 - Q: What mobile responsiveness behavior is required? → A: Mobile-first single textarea with fixed-header preview toggle; desktop split two-pane layout (HTML left, Markdown right)
 - Q: When should conversion run? → A: Automatically as user types (debounced)
 - Q: What debounce target should auto-conversion use? → A: 300ms debounce
+- Q: Should the app persist HTML/Markdown content between page reloads? → A: No persistence; clear on reload
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -101,6 +102,7 @@ output can be copied and pasted without format loss.
 - HTML entities and escaped characters
 - Unsupported or custom tags
 - Viewport resize transitions between mobile single-pane and desktop split-pane
+- Page reload clears current input/output session state
 
 ## Requirements _(mandatory)_
 
@@ -131,6 +133,8 @@ output can be copied and pasted without format loss.
   right.
 - **FR-015**: System MUST trigger conversion automatically after HTML input
   changes using a 300ms debounce interval.
+- **FR-016**: System MUST NOT persist HTML input or Markdown output between page
+  reloads in v1.
 - **FR-006**: System MUST provide a way for users to copy conversion output.
 - **FR-007**: System MUST provide clear feedback when conversion cannot produce
   meaningful output (for example, empty input).
