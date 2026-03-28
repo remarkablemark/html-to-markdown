@@ -49,3 +49,8 @@ All commands must pass before implementation is considered complete.
 - Keep conversion client-side only (no server/API calls).
 - Enforce sanitizer policy before conversion.
 - Keep conversion behavior deterministic for equivalent inputs.
+- Use concern-based module organization:
+  - `src/components/Converter/` and `src/components/ConverterHeader/` for UI
+  - `src/utils/` for conversion/sanitization/debounce/clipboard helpers
+  - `src/constants/` for shared constants and sample HTML
+  - `src/types/` for shared converter interfaces

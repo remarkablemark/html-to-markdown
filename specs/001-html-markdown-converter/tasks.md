@@ -18,24 +18,24 @@
 **Purpose**: Project initialization and tooling updates required before feature implementation.
 
 - [x] T001 Add conversion dependencies (`turndown`, `turndown-plugin-gfm`, `dompurify`) to `package.json`
-- [ ] T002 Create converter sample fixture covering required HTML elements in `src/components/App/sampleHtml.ts`
-- [ ] T003 [P] Add shared converter type interfaces (`SourceHtmlDocument`, `SanitizedHtmlDocument`, `MarkdownResult`, `ConversionRuleSet`) in `src/components/App/App.types.ts`
-- [ ] T004 [P] Add conversion constants for debounce, copy reset delay, and allowed URL schemes in `src/components/App/constants.ts`
+- [ ] T002 Create converter sample fixture covering required HTML elements in `src/constants/sampleHtml.ts`
+- [ ] T003 [P] Add shared converter type interfaces (`SourceHtmlDocument`, `SanitizedHtmlDocument`, `MarkdownResult`, `ConversionRuleSet`) in `src/types/converter.ts`
+- [ ] T004 [P] Add conversion constants for debounce, copy reset delay, and allowed URL schemes in `src/constants/converter.ts`
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Core conversion/sanitization building blocks and shared app wiring that block all user stories.
+**Purpose**: Core conversion/sanitization building blocks and shared component wiring that block all user stories.
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/components/App/sanitizeHtml.ts`
-- [ ] T006 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/components/App/convertHtmlToMarkdown.ts`
-- [ ] T007 [P] Add debounce utility with timer reset support in `src/components/App/useDebouncedValue.ts`
-- [ ] T008 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/components/App/convertHtmlToMarkdown.test.ts`
-- [ ] T009 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/components/App/sanitizeHtml.test.ts`
-- [ ] T010 Integrate conversion pipeline exports in `src/components/App/index.ts`
+- [ ] T005 Implement DOMPurify sanitizer policy (remove script/style, restrict URL schemes) in `src/utils/sanitizeHtml.ts`
+- [ ] T006 Implement Turndown + GFM conversion service with deterministic fallback rules in `src/utils/convertHtmlToMarkdown.ts`
+- [ ] T007 [P] Add debounce helper with timer reset support in `src/utils/debounce.ts`
+- [ ] T008 [P] Add conversion pipeline unit tests for deterministic output and supported element mappings in `src/utils/convertHtmlToMarkdown.test.ts`
+- [ ] T009 [P] Add sanitizer unit tests for unsafe tag/attribute/scheme stripping in `src/utils/sanitizeHtml.test.ts`
+- [ ] T010 Integrate converter component exports in `src/components/Converter/index.ts`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -51,16 +51,16 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US1] Add App integration test for prefilled sample and immediate initial conversion in `src/components/App/App.test.tsx`
-- [ ] T012 [P] [US1] Add App integration test for 300ms debounced output synchronization after HTML edits in `src/components/App/App.test.tsx`
-- [ ] T013 [P] [US1] Add App integration test for empty/whitespace input clearing Markdown output state in `src/components/App/App.test.tsx`
+- [ ] T011 [P] [US1] Add converter integration test for prefilled sample and immediate initial conversion in `src/components/Converter/Converter.test.tsx`
+- [ ] T012 [P] [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in `src/components/Converter/Converter.test.tsx`
+- [ ] T013 [P] [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in `src/components/Converter/Converter.test.tsx`
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] Implement HTML input state and source metadata (`rawHtml`, `origin`, `updatedAtMs`) in `src/components/App/App.tsx`
-- [ ] T015 [US1] Implement first-load sample initialization and immediate conversion flow in `src/components/App/App.tsx`
-- [ ] T016 [US1] Implement debounced conversion trigger (300ms) and synchronized Markdown state updates in `src/components/App/App.tsx`
-- [ ] T017 [US1] Implement read-only Markdown output pane rendering and semantic labels in `src/components/App/App.tsx`
+- [ ] T014 [US1] Implement HTML input state and source metadata (`rawHtml`, `origin`, `updatedAtMs`) in `src/components/Converter/Converter.tsx`
+- [ ] T015 [US1] Implement first-load sample initialization and immediate conversion flow in `src/components/Converter/Converter.tsx`
+- [ ] T016 [US1] Implement debounced conversion trigger (300ms) and synchronized Markdown state updates in `src/components/Converter/Converter.tsx`
+- [ ] T017 [US1] Implement read-only Markdown output pane rendering and semantic labels in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: User Story 1 is functional and independently testable.
 
@@ -74,17 +74,17 @@
 
 ### Tests for User Story 2 (REQUIRED) ⚠️
 
-- [ ] T018 [P] [US2] Add conversion service tests for malformed HTML best-effort behavior in `src/components/App/convertHtmlToMarkdown.test.ts`
-- [ ] T019 [P] [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in `src/components/App/convertHtmlToMarkdown.test.ts`
-- [ ] T020 [P] [US2] Add sanitizer tests confirming `<script>`/`<style>` removal with contents and URL scheme filtering in `src/components/App/sanitizeHtml.test.ts`
-- [ ] T021 [P] [US2] Add App integration test verifying resilient rendering for malformed HTML input in `src/components/App/App.test.tsx`
+- [ ] T018 [P] [US2] Add conversion service tests for malformed HTML best-effort behavior in `src/utils/convertHtmlToMarkdown.test.ts`
+- [ ] T019 [P] [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in `src/utils/convertHtmlToMarkdown.test.ts`
+- [ ] T020 [P] [US2] Add sanitizer tests confirming `<script>`/`<style>` removal with contents and URL scheme filtering in `src/utils/sanitizeHtml.test.ts`
+- [ ] T021 [P] [US2] Add converter integration test verifying resilient rendering for malformed HTML input in `src/components/Converter/Converter.test.tsx`
 
 ### Implementation for User Story 2
 
-- [ ] T022 [US2] Implement unsupported-tag fallback rule set and deterministic ordering guarantees in `src/components/App/convertHtmlToMarkdown.ts`
-- [ ] T023 [US2] Implement malformed-input safe parsing flow and best-effort conversion path in `src/components/App/convertHtmlToMarkdown.ts`
-- [ ] T024 [US2] Apply sanitizer-before-conversion enforcement in app conversion pipeline calls in `src/components/App/App.tsx`
-- [ ] T025 [US2] Implement empty/invalid input user feedback state for non-meaningful output in `src/components/App/App.tsx`
+- [ ] T022 [US2] Implement unsupported-tag fallback rule set and deterministic ordering guarantees in `src/utils/convertHtmlToMarkdown.ts`
+- [ ] T023 [US2] Implement malformed-input safe parsing flow and best-effort conversion path in `src/utils/convertHtmlToMarkdown.ts`
+- [ ] T024 [US2] Apply sanitizer-before-conversion enforcement in converter pipeline calls in `src/components/Converter/Converter.tsx`
+- [ ] T025 [US2] Implement empty/invalid input user feedback state for non-meaningful output in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: User Stories 1 and 2 work independently with safe, resilient conversion behavior.
 
@@ -98,19 +98,19 @@
 
 ### Tests for User Story 3 (REQUIRED) ⚠️
 
-- [ ] T026 [P] [US3] Add App integration test for mobile toggle visibility/label switching between `HTML` and `Markdown` in `src/components/App/App.test.tsx`
-- [ ] T027 [P] [US3] Add App integration test for desktop split-pane layout with toggle hidden in `src/components/App/App.test.tsx`
-- [ ] T028 [P] [US3] Add App integration test for `Copy` button enable/disable behavior based on output emptiness in `src/components/App/App.test.tsx`
-- [ ] T029 [P] [US3] Add App integration test for successful copy label transition (`Copy` -> `Copied` -> `Copy`) in `src/components/App/App.test.tsx`
-- [ ] T030 [P] [US3] Add App integration test for copy failure keeping button state unchanged with no extra feedback in `src/components/App/App.test.tsx`
+- [ ] T026 [P] [US3] Add converter integration test for mobile toggle visibility/label switching between `HTML` and `Markdown` in `src/components/Converter/Converter.test.tsx`
+- [ ] T027 [P] [US3] Add converter integration test for desktop split-pane layout with toggle hidden in `src/components/Converter/Converter.test.tsx`
+- [ ] T028 [P] [US3] Add header action integration test for `Copy` button enable/disable behavior based on output emptiness in `src/components/ConverterHeader/ConverterHeader.test.tsx`
+- [ ] T029 [P] [US3] Add header action integration test for successful copy label transition (`Copy` -> `Copied` -> `Copy`) in `src/components/ConverterHeader/ConverterHeader.test.tsx`
+- [ ] T030 [P] [US3] Add header action integration test for copy failure keeping button state unchanged with no extra feedback in `src/components/ConverterHeader/ConverterHeader.test.tsx`
 
 ### Implementation for User Story 3
 
-- [ ] T031 [US3] Implement responsive mobile single-pane toggle state and desktop split-pane behavior in `src/components/App/App.tsx`
-- [ ] T032 [US3] Implement fixed-header controls shared across mobile/desktop in `src/components/App/App.tsx`
-- [ ] T033 [US3] Implement clipboard copy action with disabled-empty guard and success-only temporary label state in `src/components/App/App.tsx`
-- [ ] T034 [US3] Implement copy failure no-op behavior preserving existing UI state in `src/components/App/App.tsx`
-- [ ] T035 [US3] Apply system-theme-only styling and remove manual theme controls in `src/components/App/App.tsx`
+- [ ] T031 [US3] Implement responsive mobile single-pane toggle state and desktop split-pane behavior in `src/components/Converter/Converter.tsx`
+- [ ] T032 [US3] Implement fixed-header controls shared across mobile/desktop in `src/components/ConverterHeader/ConverterHeader.tsx`
+- [ ] T033 [US3] Implement clipboard copy helper with disabled-empty guard and success-only temporary label state in `src/utils/copyToClipboard.ts`
+- [ ] T034 [US3] Implement copy failure no-op behavior preserving existing UI state in `src/components/ConverterHeader/ConverterHeader.tsx`
+- [ ] T035 [US3] Apply system-theme-only styling and remove manual theme controls in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -122,9 +122,9 @@
 
 - [ ] T036 [P] Update feature usage and behavior notes in `README.md`
 - [ ] T037 [P] Align verification steps and acceptance checks in `specs/001-html-markdown-converter/quickstart.md`
-- [ ] T038 Run `npm run lint` and resolve issues in `src/components/App/`
-- [ ] T039 Run `npm run lint:tsc` and resolve type errors in `src/components/App/`
-- [ ] T040 Run `npm run test:ci` and confirm coverage thresholds for converter feature tests in `src/components/App/`
+- [ ] T038 Run `npm run lint` and resolve issues in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
+- [ ] T039 Run `npm run lint:tsc` and resolve type errors in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
+- [ ] T040 Run `npm run test:ci` and confirm coverage thresholds for converter tests in `src/components/Converter/`, `src/components/ConverterHeader/`, and `src/utils/`
 - [ ] T041 Run `npm run build` and verify production output generated in `dist/`
 
 ---
@@ -137,14 +137,14 @@
 - **Phase 2 (Foundational)**: Depends on Phase 1; blocks all user stories.
 - **Phase 3 (US1)**: Depends on Phase 2; defines MVP.
 - **Phase 4 (US2)**: Depends on Phase 2 and can run independently of US3; may reuse US1 utilities.
-- **Phase 5 (US3)**: Depends on Phase 2 and can run independently of US2; reuses shared App foundation.
+- **Phase 5 (US3)**: Depends on Phase 2 and can run independently of US2; reuses shared component foundation.
 - **Phase 6 (Polish)**: Depends on completion of desired user stories.
 
 ### User Story Dependencies
 
 - **US1 (P1)**: No dependency on other stories after Phase 2.
 - **US2 (P2)**: No hard dependency on US1 outcomes, but may reuse conversion primitives.
-- **US3 (P3)**: No hard dependency on US2 outcomes, but depends on shared app state from foundation.
+- **US3 (P3)**: No hard dependency on US2 outcomes, but depends on shared converter/header state from foundation.
 
 ### Within Each User Story
 
@@ -166,25 +166,25 @@
 ## Parallel Example: User Story 1
 
 ```bash
-Task: "T011 [US1] Add App integration test for prefilled sample and immediate initial conversion in src/components/App/App.test.tsx"
-Task: "T012 [US1] Add App integration test for 300ms debounced output synchronization after HTML edits in src/components/App/App.test.tsx"
-Task: "T013 [US1] Add App integration test for empty/whitespace input clearing Markdown output state in src/components/App/App.test.tsx"
+Task: "T011 [US1] Add converter integration test for prefilled sample and immediate initial conversion in src/components/Converter/Converter.test.tsx"
+Task: "T012 [US1] Add converter integration test for 300ms debounced output synchronization after HTML edits in src/components/Converter/Converter.test.tsx"
+Task: "T013 [US1] Add converter integration test for empty/whitespace input clearing Markdown output state in src/components/Converter/Converter.test.tsx"
 ```
 
 ## Parallel Example: User Story 2
 
 ```bash
-Task: "T018 [US2] Add conversion service tests for malformed HTML best-effort behavior in src/components/App/convertHtmlToMarkdown.test.ts"
-Task: "T019 [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in src/components/App/convertHtmlToMarkdown.test.ts"
-Task: "T020 [US2] Add sanitizer tests confirming script/style removal and scheme filtering in src/components/App/sanitizeHtml.test.ts"
+Task: "T018 [US2] Add conversion service tests for malformed HTML best-effort behavior in src/utils/convertHtmlToMarkdown.test.ts"
+Task: "T019 [US2] Add conversion service tests for dropping unsupported/custom tags while preserving inner content in src/utils/convertHtmlToMarkdown.test.ts"
+Task: "T020 [US2] Add sanitizer tests confirming script/style removal and scheme filtering in src/utils/sanitizeHtml.test.ts"
 ```
 
 ## Parallel Example: User Story 3
 
 ```bash
-Task: "T026 [US3] Add App integration test for mobile toggle visibility/label switching in src/components/App/App.test.tsx"
-Task: "T028 [US3] Add App integration test for Copy button enable/disable behavior in src/components/App/App.test.tsx"
-Task: "T029 [US3] Add App integration test for successful copy label transition in src/components/App/App.test.tsx"
+Task: "T026 [US3] Add converter integration test for mobile toggle visibility/label switching in src/components/Converter/Converter.test.tsx"
+Task: "T028 [US3] Add header action integration test for Copy button enable/disable behavior in src/components/ConverterHeader/ConverterHeader.test.tsx"
+Task: "T029 [US3] Add header action integration test for successful copy label transition in src/components/ConverterHeader/ConverterHeader.test.tsx"
 ```
 
 ---
@@ -221,5 +221,5 @@ Task: "T029 [US3] Add App integration test for successful copy label transition 
 
 - All tasks follow required checklist format: `- [ ] T### [P?] [US?] Description with file path`.
 - Story labels are applied only to user story phases.
-- Paths align with planned single-project frontend structure in `plan.md`.
+- Paths align with a concern-based single-project frontend structure (`components`, `utils`, `constants`, `types`).
 - No server/API tasks are included because v1 is strictly client-side.

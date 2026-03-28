@@ -53,11 +53,29 @@ Post-Phase-1 re-check: PASS. Phase 1 artifacts define explicit conversion rules,
 /Users/mark/Code/javascript/html-to-markdown/
 ├── src/
 │   ├── components/
-│   │   └── App/
-│   │       ├── App.tsx
-│   │       ├── App.test.tsx
-│   │       ├── brands.ts
+│   │   ├── App/
+│   │   │   ├── App.tsx
+│   │   │   └── index.ts
+│   │   ├── Converter/
+│   │   │   ├── Converter.tsx
+│   │   │   ├── Converter.test.tsx
+│   │   │   └── index.ts
+│   │   └── ConverterHeader/
+│   │       ├── ConverterHeader.tsx
+│   │       ├── ConverterHeader.test.tsx
 │   │       └── index.ts
+│   ├── utils/
+│   │   ├── convertHtmlToMarkdown.ts
+│   │   ├── convertHtmlToMarkdown.test.ts
+│   │   ├── sanitizeHtml.ts
+│   │   ├── sanitizeHtml.test.ts
+│   │   ├── debounce.ts
+│   │   └── copyToClipboard.ts
+│   ├── constants/
+│   │   ├── converter.ts
+│   │   └── sampleHtml.ts
+│   ├── types/
+│   │   └── converter.ts
 │   ├── main.tsx
 │   ├── main.test.tsx
 │   ├── setupTests.ts
@@ -67,7 +85,7 @@ Post-Phase-1 re-check: PASS. Phase 1 artifacts define explicit conversion rules,
     └── 001-html-markdown-converter/
 ```
 
-**Structure Decision**: Single-project frontend structure is retained. Feature implementation will extend `src/components/App/` with focused converter UI/logic modules and tests while keeping feature planning artifacts in `specs/001-html-markdown-converter/`.
+**Structure Decision**: Single-project frontend structure is retained with concern-based organization. Feature implementation will separate UI into `src/components/` and conversion logic/helpers into `src/utils/`, with shared values in `src/constants/` and contracts in `src/types/`, while keeping planning artifacts in `specs/001-html-markdown-converter/`.
 
 ## Phase Execution Plan
 
