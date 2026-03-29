@@ -135,7 +135,7 @@ describe('Converter component', () => {
     const htmlPane = screen.getByText('HTML input').closest('label');
     const markdownPane = screen.getByText('Markdown output').closest('label');
 
-    expect(htmlPane).toHaveClass('block');
+    expect(htmlPane).toHaveClass('flex');
     expect(markdownPane).toHaveClass('hidden');
 
     fireEvent.click(toggleButton);
@@ -147,7 +147,7 @@ describe('Converter component', () => {
     ).toBeInTheDocument();
 
     expect(htmlPane).toHaveClass('hidden');
-    expect(markdownPane).toHaveClass('block');
+    expect(markdownPane).toHaveClass('flex');
   });
 
   it('applies desktop split-pane classes and mobile toggle hidden class', () => {
@@ -160,7 +160,7 @@ describe('Converter component', () => {
     const markdownPane = screen.getByText('Markdown output').closest('label');
 
     expect(mobileToggleButton).toHaveClass('md:hidden');
-    expect(htmlPane).toHaveClass('md:block');
-    expect(markdownPane).toHaveClass('md:block');
+    expect(htmlPane).toHaveClass('md:flex');
+    expect(markdownPane).toHaveClass('md:flex');
   });
 });

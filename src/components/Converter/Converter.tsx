@@ -70,20 +70,22 @@ export function Converter() {
   }
 
   return (
-    <section className="w-full">
+    <section className="flex min-h-0 flex-1 flex-col overflow-hidden">
       <ConverterHeader
         markdown={markdownResult.markdown}
         mobilePane={mobilePane}
         onTogglePane={handleMobilePaneToggle}
       />
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid min-h-0 flex-1 md:grid-cols-2">
         <label
-          className={`${mobilePane === 'html' ? 'block' : 'hidden'} space-y-2 md:block`}
+          className={`${mobilePane === 'html' ? 'flex' : 'hidden'} min-h-0 flex-col border-b border-slate-300 md:flex md:border-r md:border-b-0 dark:border-slate-800`}
           htmlFor="html-input"
         >
-          <span className="block text-sm font-medium">HTML input</span>
+          <span className="block border-b border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
+            HTML input
+          </span>
           <textarea
-            className="min-h-72 w-full rounded-md border border-slate-300 p-3 font-mono text-sm dark:border-slate-700"
+            className="min-h-0 w-full flex-1 resize-none border-0 bg-slate-100 p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-950 dark:text-slate-100"
             id="html-input"
             name="htmlInput"
             onChange={handleHtmlInputChange}
@@ -92,12 +94,14 @@ export function Converter() {
         </label>
 
         <label
-          className={`${mobilePane === 'markdown' ? 'block' : 'hidden'} space-y-2 md:block`}
+          className={`${mobilePane === 'markdown' ? 'flex' : 'hidden'} min-h-0 flex-col md:flex`}
           htmlFor="markdown-output"
         >
-          <span className="block text-sm font-medium">Markdown output</span>
+          <span className="block border-b border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
+            Markdown output
+          </span>
           <textarea
-            className="min-h-72 w-full rounded-md border border-slate-300 bg-slate-50 p-3 font-mono text-sm dark:border-slate-700 dark:bg-slate-900"
+            className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-900 dark:text-slate-100"
             id="markdown-output"
             name="markdownOutput"
             readOnly
