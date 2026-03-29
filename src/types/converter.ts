@@ -14,9 +14,3 @@ export interface MarkdownResult {
   markdown: string;
   isEmpty: boolean;
 }
-
-export interface ConversionRuleSet {
-  targetFlavor: 'gfm';
-  supportedElements: string[];
-  fallbackMode: 'drop-tag-keep-content';
-}
