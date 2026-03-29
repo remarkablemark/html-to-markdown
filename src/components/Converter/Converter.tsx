@@ -24,19 +24,6 @@ const INITIAL_SOURCE_HTML_DOCUMENT: SourceHtmlDocument = {
   updatedAtMs: Date.now(),
 };
 
-const DESKTOP_MEDIA_QUERY = '(min-width: 768px)';
-
-function isMobileLayout() {
-  if (
-    typeof window === 'undefined' ||
-    typeof window.matchMedia !== 'function'
-  ) {
-    return false;
-  }
-
-  return !window.matchMedia(DESKTOP_MEDIA_QUERY).matches;
-}
-
 export function Converter() {
   const [sourceHtmlDocument, setSourceHtmlDocument] = useState(
     INITIAL_SOURCE_HTML_DOCUMENT,
@@ -44,43 +31,12 @@ export function Converter() {
   const [markdownResult, setMarkdownResult] = useState<MarkdownResult>(() =>
     buildMarkdownResult(INITIAL_SOURCE_HTML_DOCUMENT.rawHtml),
   );
-  const [isMobile, setIsMobile] = useState(isMobileLayout);
   const [mobilePane, setMobilePane] = useState<'html' | 'markdown'>('html');
   const debouncedConvertRef = useRef<DebouncedFunction<[string]> | null>(null);
 
   debouncedConvertRef.current ??= debounce((rawHtml: string) => {
     setMarkdownResult(buildMarkdownResult(rawHtml));
   }, CONVERSION_DEBOUNCE_DELAY_MS);
-
-  useEffect(() => {
-    if (
-      typeof window === 'undefined' ||
-      typeof window.matchMedia !== 'function'
-    ) {
-      return;
-    }
-
-    const mediaQueryList = window.matchMedia(DESKTOP_MEDIA_QUERY);
-
-    /* v8 ignore start */
-    function handleMediaQueryChange(event: MediaQueryListEvent) {
-      setIsMobile(!event.matches);
-    }
-    /* v8 ignore stop */
-
-    setIsMobile(!mediaQueryList.matches);
-    mediaQueryList.addEventListener('change', handleMediaQueryChange);
-
-    return () => {
-      mediaQueryList.removeEventListener('change', handleMediaQueryChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile) {
-      setMobilePane('html');
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     return () => {
@@ -116,37 +72,38 @@ export function Converter() {
   return (
     <section className="w-full">
       <ConverterHeader
-        isMobile={isMobile}
         markdown={markdownResult.markdown}
         mobilePane={mobilePane}
         onTogglePane={handleMobilePaneToggle}
       />
       <div className="grid gap-4 md:grid-cols-2">
-        {!isMobile || mobilePane === 'html' ? (
-          <label className="space-y-2" htmlFor="html-input">
-            <span className="block text-sm font-medium">HTML input</span>
-            <textarea
-              className="min-h-72 w-full rounded-md border border-slate-300 p-3 font-mono text-sm dark:border-slate-700"
-              id="html-input"
-              name="htmlInput"
-              onChange={handleHtmlInputChange}
-              value={sourceHtmlDocument.rawHtml}
-            />
-          </label>
-        ) : null}
+        <label
+          className={`${mobilePane === 'html' ? 'block' : 'hidden'} space-y-2 md:block`}
+          htmlFor="html-input"
+        >
+          <span className="block text-sm font-medium">HTML input</span>
+          <textarea
+            className="min-h-72 w-full rounded-md border border-slate-300 p-3 font-mono text-sm dark:border-slate-700"
+            id="html-input"
+            name="htmlInput"
+            onChange={handleHtmlInputChange}
+            value={sourceHtmlDocument.rawHtml}
+          />
+        </label>
 
-        {!isMobile || mobilePane === 'markdown' ? (
-          <label className="space-y-2" htmlFor="markdown-output">
-            <span className="block text-sm font-medium">Markdown output</span>
-            <textarea
-              className="min-h-72 w-full rounded-md border border-slate-300 bg-slate-50 p-3 font-mono text-sm dark:border-slate-700 dark:bg-slate-900"
-              id="markdown-output"
-              name="markdownOutput"
-              readOnly
-              value={markdownResult.markdown}
-            />
-          </label>
-        ) : null}
+        <label
+          className={`${mobilePane === 'markdown' ? 'block' : 'hidden'} space-y-2 md:block`}
+          htmlFor="markdown-output"
+        >
+          <span className="block text-sm font-medium">Markdown output</span>
+          <textarea
+            className="min-h-72 w-full rounded-md border border-slate-300 bg-slate-50 p-3 font-mono text-sm dark:border-slate-700 dark:bg-slate-900"
+            id="markdown-output"
+            name="markdownOutput"
+            readOnly
+            value={markdownResult.markdown}
+          />
+        </label>
       </div>
     </section>
   );

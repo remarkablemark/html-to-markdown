@@ -6,12 +6,7 @@ import { ConverterHeader } from '.';
 describe('ConverterHeader component', () => {
   it('disables Copy button when markdown output is empty', () => {
     render(
-      <ConverterHeader
-        isMobile={false}
-        markdown=""
-        mobilePane="html"
-        onTogglePane={vi.fn()}
-      />,
+      <ConverterHeader markdown="" mobilePane="html" onTogglePane={vi.fn()} />,
     );
 
     expect(
@@ -36,7 +31,6 @@ describe('ConverterHeader component', () => {
     try {
       render(
         <ConverterHeader
-          isMobile={false}
           markdown="# converted"
           mobilePane="html"
           onTogglePane={vi.fn()}
@@ -89,7 +83,6 @@ describe('ConverterHeader component', () => {
 
     render(
       <ConverterHeader
-        isMobile={false}
         markdown="## ready"
         mobilePane="html"
         onTogglePane={vi.fn()}

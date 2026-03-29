@@ -3,7 +3,6 @@ import { COPY_LABEL_RESET_DELAY_MS } from 'src/constants/converter';
 import { copyToClipboard } from 'src/utils/copyToClipboard';
 
 interface ConverterHeaderProps {
-  isMobile: boolean;
   markdown: string;
   mobilePane: 'html' | 'markdown';
   onTogglePane: () => void;
@@ -13,7 +12,6 @@ const COPY_BUTTON_LABEL = 'Copy';
 const COPIED_BUTTON_LABEL = 'Copied';
 
 export function ConverterHeader({
-  isMobile,
   markdown,
   mobilePane,
   onTogglePane,
@@ -63,15 +61,13 @@ export function ConverterHeader({
       </h2>
 
       <div className="flex items-center gap-2">
-        {isMobile ? (
-          <button
-            className="rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-            onClick={onTogglePane}
-            type="button"
-          >
-            {mobileToggleLabel}
-          </button>
-        ) : null}
+        <button
+          className="rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          onClick={onTogglePane}
+          type="button"
+        >
+          {mobileToggleLabel}
+        </button>
 
         <button
           className="rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
