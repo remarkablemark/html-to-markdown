@@ -25,7 +25,7 @@ export function ConverterPane({
         {headerLabel}
       </span>
       <textarea
-        className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-900 dark:text-slate-100"
+        className={`min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-900 dark:text-slate-100 ${headerLabel === 'Markdown' ? 'dark:md:bg-slate-800' : ''}`}
         id={id}
         name={name}
         onChange={onChange}

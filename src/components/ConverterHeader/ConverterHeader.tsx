@@ -58,7 +58,7 @@ export function ConverterHeader({
   const mobileToggleLabel = mobilePane === 'html' ? 'Markdown' : 'HTML';
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center justify-between gap-3 border-b border-slate-300 bg-gray-50 px-4 py-2 dark:border-slate-800 dark:bg-slate-950">
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between gap-3 border-b border-slate-300 bg-gray-50 px-4 py-2 dark:border-slate-700 dark:bg-gray-800">
       <h1 className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
         HTML to Markdown
       </h1>
@@ -66,7 +66,7 @@ export function ConverterHeader({
       <div className="flex items-center gap-2">
         <a
           aria-label="GitHub repository"
-          className="hidden h-8 w-8 items-center justify-center rounded border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100 md:flex dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="hidden h-9 w-9 items-center justify-center rounded border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100 md:flex dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           href="https://github.com/remarkablemark/html-to-markdown"
           rel="noopener noreferrer"
           target="_blank"
@@ -84,7 +84,7 @@ export function ConverterHeader({
 
         <button
           aria-label={`Switch to ${mobileToggleLabel}`}
-          className="cursor-pointer rounded border border-slate-300 bg-white p-2 text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="cursor-pointer rounded border border-slate-300 bg-white p-2 text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           onClick={onTogglePane}
           title={`Switch to ${mobileToggleLabel}`}
           type="button"
@@ -103,7 +103,7 @@ export function ConverterHeader({
 
         <button
           aria-label={copyButtonLabel}
-          className={`cursor-pointer rounded border border-slate-300 p-2 text-slate-700 transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:py-1 md:text-sm md:font-medium dark:border-slate-700 dark:text-slate-200 ${justCopied ? 'scale-95 bg-green-100 hover:bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-900/30' : 'bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800'}`}
+          className={`h-9 cursor-pointer rounded border border-slate-300 p-2 text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:text-sm md:font-medium dark:border-slate-600 ${justCopied ? 'scale-95 bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/30 dark:text-slate-200 dark:hover:bg-green-900/30' : 'bg-blue-500 hover:bg-blue-600'}`}
           disabled={!markdown.length}
           onClick={() => {
             void handleCopyButtonClick();
