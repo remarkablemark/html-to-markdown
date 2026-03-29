@@ -99,19 +99,19 @@
 
 ### Tests for User Story 3 (REQUIRED) ⚠️
 
-- [ ] T026 [P] [US3] Add converter integration test for mobile toggle visibility/label switching between `HTML` and `Markdown` in `src/components/Converter/Converter.test.tsx`
-- [ ] T027 [P] [US3] Add converter integration test for desktop split-pane layout with toggle hidden in `src/components/Converter/Converter.test.tsx`
-- [ ] T028 [P] [US3] Add header action integration test for `Copy` button enable/disable behavior based on output emptiness in `src/components/ConverterHeader/ConverterHeader.test.tsx`
-- [ ] T029 [P] [US3] Add header action integration test for successful copy label transition (`Copy` -> `Copied` -> `Copy`) in `src/components/ConverterHeader/ConverterHeader.test.tsx`
-- [ ] T030 [P] [US3] Add header action integration test for copy failure keeping button state unchanged with no extra feedback in `src/components/ConverterHeader/ConverterHeader.test.tsx`
+- [x] T026 [P] [US3] Add converter integration test for mobile toggle visibility/label switching between `HTML` and `Markdown` in `src/components/Converter/Converter.test.tsx`
+- [x] T027 [P] [US3] Add converter integration test for desktop split-pane layout with toggle hidden in `src/components/Converter/Converter.test.tsx`
+- [x] T028 [P] [US3] Add header action integration test for `Copy` button enable/disable behavior based on output emptiness in `src/components/ConverterHeader/ConverterHeader.test.tsx`
+- [x] T029 [P] [US3] Add header action integration test for successful copy label transition (`Copy` -> `Copied` -> `Copy`) in `src/components/ConverterHeader/ConverterHeader.test.tsx`
+- [x] T030 [P] [US3] Add header action integration test for copy failure keeping button state unchanged with no extra feedback in `src/components/ConverterHeader/ConverterHeader.test.tsx`
 
 ### Implementation for User Story 3
 
-- [ ] T031 [US3] Implement responsive mobile single-pane toggle state and desktop split-pane behavior in `src/components/Converter/Converter.tsx`
-- [ ] T032 [US3] Implement fixed-header controls shared across mobile/desktop in `src/components/ConverterHeader/ConverterHeader.tsx`
-- [ ] T033 [US3] Implement clipboard copy helper with disabled-empty guard and success-only temporary label state in `src/utils/copyToClipboard.ts`
-- [ ] T034 [US3] Implement copy failure no-op behavior preserving existing UI state in `src/components/ConverterHeader/ConverterHeader.tsx`
-- [ ] T035 [US3] Apply system-theme-only styling and remove manual theme controls in `src/components/Converter/Converter.tsx`
+- [x] T031 [US3] Implement responsive mobile single-pane toggle state and desktop split-pane behavior in `src/components/Converter/Converter.tsx`
+- [x] T032 [US3] Implement fixed-header controls shared across mobile/desktop in `src/components/ConverterHeader/ConverterHeader.tsx`
+- [x] T033 [US3] Implement clipboard copy helper with disabled-empty guard and success-only temporary label state in `src/utils/copyToClipboard.ts`
+- [x] T034 [US3] Implement copy failure no-op behavior preserving existing UI state in `src/components/ConverterHeader/ConverterHeader.tsx`
+- [x] T035 [US3] Apply system-theme-only styling and remove manual theme controls in `src/components/Converter/Converter.tsx`
 
 **Checkpoint**: All user stories are independently functional.
 

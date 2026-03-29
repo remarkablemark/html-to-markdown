@@ -9,7 +9,28 @@ function getExpectedMarkdown(rawHtml: string): string {
   return convertHtmlToMarkdown(sanitizeHtml(rawHtml).sanitizedHtml);
 }
 
+function mockMatchMedia(isDesktop: boolean) {
+  Object.defineProperty(window, 'matchMedia', {
+    configurable: true,
+    writable: true,
+    value: vi.fn().mockImplementation((query: string) => ({
+      matches: query === '(min-width: 768px)' ? isDesktop : false,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+    })),
+  });
+}
+
 describe('Converter component', () => {
+  beforeEach(() => {
+    mockMatchMedia(true);
+  });
+
   it('prefills sample HTML and immediately renders converted Markdown', () => {
     render(<Converter />);
 
@@ -123,5 +144,71 @@ describe('Converter component', () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it('shows mobile pane toggle and switches label between Markdown and HTML', () => {
+    mockMatchMedia(false);
+
+    render(<Converter />);
+
+    const toggleButton = screen.getByRole('button', {
+      name: 'Markdown',
+    });
+    expect(toggleButton).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', {
+        name: 'HTML input',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('textbox', {
+        name: 'Markdown output',
+      }),
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(toggleButton);
+
+    expect(
+      screen.getByRole('button', {
+        name: 'HTML',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', {
+        name: 'Markdown output',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('textbox', {
+        name: 'HTML input',
+      }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('renders desktop split-pane layout and hides mobile toggle', () => {
+    mockMatchMedia(true);
+
+    render(<Converter />);
+
+    expect(
+      screen.queryByRole('button', {
+        name: 'HTML',
+      }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', {
+        name: 'Markdown',
+      }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', {
+        name: 'HTML input',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', {
+        name: 'Markdown output',
+      }),
+    ).toBeInTheDocument();
   });
 });
