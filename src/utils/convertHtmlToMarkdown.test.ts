@@ -30,8 +30,8 @@ describe('convertHtmlToMarkdown', () => {
     expect(result).toContain('1.  Ordered item one');
     expect(result).toContain('[Example](https://example.com)');
     expect(result).toContain('![Sample image](https://picsum.photos/100)');
-    expect(result).toContain('> Conversion should preserve semantic meaning.');
-    expect(result).toContain('```ts');
+    expect(result).toContain('> Blockquote');
+    expect(result).toContain('```javascript');
     expect(result).toContain('| Feature | Status |');
     expect(result).toContain('---');
     expect(result).toMatch(/-\s+\[x\]\s+Completed checklist item/u);

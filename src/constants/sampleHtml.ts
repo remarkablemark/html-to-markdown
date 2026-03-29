@@ -20,9 +20,9 @@ export const SAMPLE_HTML = `<h1>Heading</h1>
   />
 </p>
 <blockquote>
-  <p>Conversion should preserve semantic meaning.</p>
+  <p>Blockquote</p>
 </blockquote>
-<pre><code class="language-ts">const greeting = "Hello";
+<pre><code class="language-javascript">const greeting = "Hello";
 console.log(greeting);
 </code></pre>
 <table>
