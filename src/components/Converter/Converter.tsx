@@ -7,6 +7,7 @@ import { debounce, type DebouncedFunction } from 'src/utils/debounce';
 import { sanitizeHtml } from 'src/utils/sanitizeHtml';
 
 import { ConverterHeader } from '../ConverterHeader';
+import { ConverterPane } from '../ConverterPane';
 
 function buildMarkdownResult(rawHtml: string): MarkdownResult {
   const sanitized = sanitizeHtml(rawHtml);
@@ -77,37 +78,23 @@ export function Converter() {
         onTogglePane={handleMobilePaneToggle}
       />
       <div className="grid min-h-0 flex-1 md:grid-cols-2">
-        <label
-          className={`${mobilePane === 'html' ? 'flex' : 'hidden'} min-h-0 flex-col border-b border-slate-300 md:flex md:border-r md:border-b-0 dark:border-slate-800`}
-          htmlFor="html-input"
-        >
-          <span className="block border-b border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100">
-            HTML
-          </span>
-          <textarea
-            className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-950 dark:text-slate-100"
-            id="html-input"
-            name="htmlInput"
-            onChange={handleHtmlInputChange}
-            value={sourceHtmlDocument.rawHtml}
-          />
-        </label>
+        <ConverterPane
+          headerLabel="HTML"
+          id="html-input"
+          name="htmlInput"
+          onChange={handleHtmlInputChange}
+          className={mobilePane === 'html' ? 'flex' : 'hidden'}
+          value={sourceHtmlDocument.rawHtml}
+        />
 
-        <label
-          className={`${mobilePane === 'markdown' ? 'flex' : 'hidden'} min-h-0 flex-col md:flex`}
-          htmlFor="markdown-output"
-        >
-          <span className="block border-b border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100">
-            Markdown
-          </span>
-          <textarea
-            className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-900 dark:text-slate-100"
-            id="markdown-output"
-            name="markdownOutput"
-            readOnly
-            value={markdownResult.markdown}
-          />
-        </label>
+        <ConverterPane
+          headerLabel="Markdown"
+          id="markdown-output"
+          name="markdownOutput"
+          className={mobilePane === 'markdown' ? 'flex' : 'hidden'}
+          readOnly
+          value={markdownResult.markdown}
+        />
       </div>
     </section>
   );
