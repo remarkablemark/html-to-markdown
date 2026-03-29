@@ -80,22 +80,46 @@ export function ConverterHeader({
         </a>
 
         <button
-          className="cursor-pointer rounded border border-slate-300 bg-white px-4 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          aria-label={`Switch to ${mobileToggleLabel}`}
+          className="cursor-pointer rounded border border-slate-300 bg-white p-2 text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           onClick={onTogglePane}
+          title={`Switch to ${mobileToggleLabel}`}
           type="button"
         >
-          {mobileToggleLabel}
+          <svg
+            aria-hidden="true"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 7h12m0 0-4-4m4 4-4 4m0 6H4m0 0 4 4m-4-4 4-4" />
+          </svg>
         </button>
 
         <button
-          className="cursor-pointer rounded border border-slate-300 bg-white px-4 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          aria-label={copyButtonLabel}
+          className="cursor-pointer rounded border border-slate-300 bg-white p-2 text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:py-1 md:text-sm md:font-medium dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           disabled={!markdown.length}
           onClick={() => {
             void handleCopyButtonClick();
           }}
+          title={copyButtonLabel}
           type="button"
         >
-          {copyButtonLabel}
+          <svg
+            aria-hidden="true"
+            className="h-5 w-5 md:hidden"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <rect height="13" rx="2" ry="2" width="13" x="9" y="9" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          <span className="hidden md:inline">{copyButtonLabel}</span>
         </button>
       </div>
     </header>

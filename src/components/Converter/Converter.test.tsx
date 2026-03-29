@@ -129,7 +129,7 @@ describe('Converter component', () => {
     render(<Converter />);
 
     const toggleButton = screen.getByRole('button', {
-      name: 'Markdown',
+      name: 'Switch to Markdown',
     });
     expect(toggleButton).toBeInTheDocument();
     const htmlPane = screen
@@ -150,7 +150,7 @@ describe('Converter component', () => {
 
     expect(
       screen.getByRole('button', {
-        name: 'HTML',
+        name: 'Switch to HTML',
       }),
     ).toBeInTheDocument();
 
@@ -162,7 +162,7 @@ describe('Converter component', () => {
     render(<Converter />);
 
     const mobileToggleButton = screen.getByRole('button', {
-      name: 'Markdown',
+      name: 'Switch to Markdown',
     });
     const htmlPane = screen
       .getByRole('textbox', {
