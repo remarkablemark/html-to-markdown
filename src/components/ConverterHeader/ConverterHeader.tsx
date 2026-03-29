@@ -108,7 +108,7 @@ export function ConverterHeader({
           onClick={() => {
             void handleCopyButtonClick();
           }}
-          title="Copy Markdown to clipboard"
+          title="Copy Markdown"
           type="button"
         >
           <svg
