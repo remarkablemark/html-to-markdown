@@ -85,7 +85,7 @@ export function Converter() {
             HTML input
           </span>
           <textarea
-            className="min-h-0 w-full flex-1 resize-none border-0 bg-slate-100 p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-950 dark:text-slate-100"
+            className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-950 dark:text-slate-100"
             id="html-input"
             name="htmlInput"
             onChange={handleHtmlInputChange}
