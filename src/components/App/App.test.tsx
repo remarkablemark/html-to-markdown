@@ -3,23 +3,15 @@ import { render, screen } from '@testing-library/react';
 import { App } from '.';
 
 describe('App component', () => {
-  it('renders app heading and converter section', () => {
+  it('renders with heading, HTML input, and read-only Markdown output', () => {
     render(<App />);
 
-    const heading = screen.getByRole('heading', {
-      level: 1,
-      name: 'HTML to Markdown',
-    });
-    expect(heading).toBeInTheDocument();
-
-    const converterRegion = screen.getByRole('textbox', {
-      name: 'HTML',
-    });
-    expect(converterRegion).toBeInTheDocument();
-  });
-
-  it('renders HTML input and read-only Markdown output', () => {
-    render(<App />);
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'HTML to Markdown',
+      }),
+    ).toBeInTheDocument();
 
     const htmlInput = screen.getByRole('textbox', {
       name: 'HTML',
@@ -29,6 +21,7 @@ describe('App component', () => {
     const markdownOutput = screen.getByRole('textbox', {
       name: 'Markdown',
     });
+    expect(markdownOutput).toBeInTheDocument();
     expect(markdownOutput).toHaveAttribute('readonly');
   });
 });

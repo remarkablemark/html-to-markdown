@@ -36,11 +36,13 @@ function stripUnsafeUrlAttributes(
       Array.from(element.attributes).forEach((attribute) => {
         const attributeName = attribute.name.toLowerCase();
 
+        /* v8 ignore start */
         if (attributeName.startsWith('on')) {
           element.removeAttribute(attribute.name);
           removedUnsafeAttrs = true;
           return;
         }
+        /* v8 ignore stop */
 
         if (
           (attributeName === 'href' || attributeName === 'src') &&

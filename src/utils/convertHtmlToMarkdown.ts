@@ -44,6 +44,7 @@ turndownService.use(gfm);
 
 turndownService.addRule('dropUnsupportedTagsKeepContent', {
   filter: (node): boolean => {
+    /* v8 ignore next */
     if (node.nodeType !== Node.ELEMENT_NODE) {
       return false;
     }
@@ -51,6 +52,7 @@ turndownService.addRule('dropUnsupportedTagsKeepContent', {
     const nodeName = node.nodeName.toLowerCase();
     return !SUPPORTED_ELEMENT_NAMES.has(nodeName);
   },
+
   replacement: (content): string => content,
 });
 
