@@ -16,6 +16,10 @@ export default defineConfig({
               name: 'react',
               test: /node_modules\/(react|react-dom)/,
             },
+            {
+              name: 'turndown',
+              test: /node_modules\/(dompurify|turndown|turndown-plugin-gfm)/,
+            },
           ],
         },
       },
