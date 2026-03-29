@@ -42,6 +42,27 @@ const turndownService = new TurndownService({
 
 turndownService.use(gfm);
 
+turndownService.addRule('listItemSingleSpace', {
+  filter: 'li',
+
+  replacement: (content, node, options): string => {
+    const prefix =
+      node.parentNode?.nodeName === 'OL'
+        ? `${String(Array.prototype.indexOf.call(node.parentNode.children, node) + 1)}. `
+        : /* v8 ignore start */
+          `${options.bulletListMarker ?? '-'} `;
+    /* v8 ignore stop */
+
+    const trimmedContent = content.trim();
+    const indentedContent = trimmedContent.replace(
+      /\n/gm,
+      '\n' + ' '.repeat(prefix.length),
+    );
+
+    return prefix + indentedContent + (node.nextSibling ? '\n' : '');
+  },
+});
+
 turndownService.addRule('dropUnsupportedTagsKeepContent', {
   filter: (node): boolean => {
     /* v8 ignore next */

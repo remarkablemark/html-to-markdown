@@ -27,7 +27,7 @@ describe('convertHtmlToMarkdown', () => {
     expect(result).toContain('_italic_');
     expect(result).toContain('`inline code`');
     expect(result).toMatch(/-\s+Unordered item one/u);
-    expect(result).toContain('1.  Ordered item one');
+    expect(result).toContain('1. Ordered item one');
     expect(result).toContain('[Example](https://example.com)');
     expect(result).toContain('![Sample image](https://picsum.photos/100)');
     expect(result).toContain('> Blockquote');
@@ -81,5 +81,49 @@ describe('convertHtmlToMarkdown', () => {
     const result = convertHtmlToMarkdown('<!-- comment --><p>Content</p>');
 
     expect(result).toContain('Content');
+  });
+
+  it('uses single space after list markers', () => {
+    const html = `
+      <ul>
+        <li>Unordered item one</li>
+        <li>Unordered item two</li>
+      </ul>
+      <ol>
+        <li>Ordered item one</li>
+        <li>Ordered item two</li>
+      </ol>
+    `;
+    const result = convertHtmlToMarkdown(html);
+
+    expect(result).toContain('- Unordered item one');
+    expect(result).toContain('- Unordered item two');
+    expect(result).toContain('1. Ordered item one');
+    expect(result).toContain('2. Ordered item two');
+  });
+
+  it('converts nested lists with proper indentation', () => {
+    const html = `
+      <ul>
+        <li>Parent item
+          <ul>
+            <li>Nested unordered</li>
+          </ul>
+        </li>
+      </ul>
+      <ol>
+        <li>Parent ordered
+          <ol>
+            <li>Nested ordered</li>
+          </ol>
+        </li>
+      </ol>
+    `;
+    const result = convertHtmlToMarkdown(html);
+
+    expect(result).toContain('- Parent item');
+    expect(result).toContain('  - Nested unordered');
+    expect(result).toContain('1. Parent ordered');
+    expect(result).toContain('   1. Nested ordered');
   });
 });
