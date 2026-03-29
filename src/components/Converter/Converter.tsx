@@ -83,7 +83,7 @@ export function Converter() {
           id="html-input"
           name="htmlInput"
           onChange={handleHtmlInputChange}
-          className={mobilePane === 'html' ? 'flex' : 'hidden'}
+          className={`${mobilePane === 'html' ? 'flex' : 'hidden'} md:border-r md:border-slate-300 dark:md:border-slate-700`}
           value={sourceHtmlDocument.rawHtml}
         />
 
