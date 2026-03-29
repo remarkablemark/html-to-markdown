@@ -17,6 +17,7 @@ export function ConverterHeader({
   onTogglePane,
 }: ConverterHeaderProps) {
   const [copyButtonLabel, setCopyButtonLabel] = useState(COPY_BUTTON_LABEL);
+  const [justCopied, setJustCopied] = useState(false);
   const copyResetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -47,8 +48,10 @@ export function ConverterHeader({
     /* v8 ignore stop */
 
     setCopyButtonLabel(COPIED_BUTTON_LABEL);
+    setJustCopied(true);
     copyResetTimerRef.current = setTimeout(() => {
       setCopyButtonLabel(COPY_BUTTON_LABEL);
+      setJustCopied(false);
     }, COPY_LABEL_RESET_DELAY_MS);
   }
 
@@ -100,12 +103,12 @@ export function ConverterHeader({
 
         <button
           aria-label={copyButtonLabel}
-          className="cursor-pointer rounded border border-slate-300 bg-white p-2 text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:py-1 md:text-sm md:font-medium dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className={`cursor-pointer rounded border border-slate-300 p-2 text-slate-700 transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:py-1 md:text-sm md:font-medium dark:border-slate-700 dark:text-slate-200 ${justCopied ? 'scale-95 bg-green-100 hover:bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-900/30' : 'bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800'}`}
           disabled={!markdown.length}
           onClick={() => {
             void handleCopyButtonClick();
           }}
-          title={copyButtonLabel}
+          title="Copy Markdown to clipboard"
           type="button"
         >
           <svg
@@ -116,8 +119,16 @@ export function ConverterHeader({
             strokeWidth="2"
             viewBox="0 0 24 24"
           >
-            <rect height="13" rx="2" ry="2" width="13" x="9" y="9" />
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            {justCopied ? (
+              <>
+                <path d="M20 6 9 17l-5-5" />
+              </>
+            ) : (
+              <>
+                <rect height="13" rx="2" ry="2" width="13" x="9" y="9" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </>
+            )}
           </svg>
           <span className="hidden md:inline">{copyButtonLabel}</span>
         </button>
