@@ -14,10 +14,10 @@ describe('Converter component', () => {
     render(<Converter />);
 
     const htmlInput = screen.getByRole('textbox', {
-      name: 'HTML input',
+      name: 'HTML',
     });
     const markdownOutput = screen.getByRole('textbox', {
-      name: 'Markdown output',
+      name: 'Markdown',
     });
 
     expect(htmlInput).toHaveValue(SAMPLE_HTML);
@@ -32,10 +32,10 @@ describe('Converter component', () => {
       render(<Converter />);
 
       const htmlInput = screen.getByRole('textbox', {
-        name: 'HTML input',
+        name: 'HTML',
       });
       const markdownOutput = screen.getByRole('textbox', {
-        name: 'Markdown output',
+        name: 'Markdown',
       });
       const initialMarkdown = getExpectedMarkdown(SAMPLE_HTML);
       const updatedHtml = '<h2>Updated Heading</h2><p>Updated paragraph</p>';
@@ -69,10 +69,10 @@ describe('Converter component', () => {
       render(<Converter />);
 
       const htmlInput = screen.getByRole('textbox', {
-        name: 'HTML input',
+        name: 'HTML',
       });
       const markdownOutput = screen.getByRole('textbox', {
-        name: 'Markdown output',
+        name: 'Markdown',
       });
 
       fireEvent.change(htmlInput, {
@@ -97,10 +97,10 @@ describe('Converter component', () => {
       render(<Converter />);
 
       const htmlInput = screen.getByRole('textbox', {
-        name: 'HTML input',
+        name: 'HTML',
       });
       const markdownOutput = screen.getByRole('textbox', {
-        name: 'Markdown output',
+        name: 'Markdown',
       });
       const malformedHtml =
         '<article><h3>Broken <em>heading<p>Body <strong>text<div>Tail';
@@ -132,8 +132,16 @@ describe('Converter component', () => {
       name: 'Markdown',
     });
     expect(toggleButton).toBeInTheDocument();
-    const htmlPane = screen.getByText('HTML input').closest('label');
-    const markdownPane = screen.getByText('Markdown output').closest('label');
+    const htmlPane = screen
+      .getByRole('textbox', {
+        name: 'HTML',
+      })
+      .closest('label');
+    const markdownPane = screen
+      .getByRole('textbox', {
+        name: 'Markdown',
+      })
+      .closest('label');
 
     expect(htmlPane).toHaveClass('flex');
     expect(markdownPane).toHaveClass('hidden');
@@ -156,8 +164,16 @@ describe('Converter component', () => {
     const mobileToggleButton = screen.getByRole('button', {
       name: 'Markdown',
     });
-    const htmlPane = screen.getByText('HTML input').closest('label');
-    const markdownPane = screen.getByText('Markdown output').closest('label');
+    const htmlPane = screen
+      .getByRole('textbox', {
+        name: 'HTML',
+      })
+      .closest('label');
+    const markdownPane = screen
+      .getByRole('textbox', {
+        name: 'Markdown',
+      })
+      .closest('label');
 
     expect(mobileToggleButton).toHaveClass('md:hidden');
     expect(htmlPane).toHaveClass('md:flex');

@@ -81,8 +81,8 @@ export function Converter() {
           className={`${mobilePane === 'html' ? 'flex' : 'hidden'} min-h-0 flex-col border-b border-slate-300 md:flex md:border-r md:border-b-0 dark:border-slate-800`}
           htmlFor="html-input"
         >
-          <span className="block border-b border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
-            HTML input
+          <span className="block border-b border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
+            HTML
           </span>
           <textarea
             className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-950 dark:text-slate-100"
@@ -97,8 +97,8 @@ export function Converter() {
           className={`${mobilePane === 'markdown' ? 'flex' : 'hidden'} min-h-0 flex-col md:flex`}
           htmlFor="markdown-output"
         >
-          <span className="block border-b border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
-            Markdown output
+          <span className="block border-b border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-300">
+            Markdown
           </span>
           <textarea
             className="min-h-0 w-full flex-1 resize-none border-0 bg-white p-3 font-mono text-sm leading-7 text-slate-900 outline-none dark:bg-slate-900 dark:text-slate-100"

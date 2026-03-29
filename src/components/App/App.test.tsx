@@ -13,7 +13,7 @@ describe('App component', () => {
     expect(heading).toBeInTheDocument();
 
     const converterRegion = screen.getByRole('textbox', {
-      name: 'HTML input',
+      name: 'HTML',
     });
     expect(converterRegion).toBeInTheDocument();
   });
@@ -22,12 +22,12 @@ describe('App component', () => {
     render(<App />);
 
     const htmlInput = screen.getByRole('textbox', {
-      name: 'HTML input',
+      name: 'HTML',
     });
     expect(htmlInput).toBeInTheDocument();
 
     const markdownOutput = screen.getByRole('textbox', {
-      name: 'Markdown output',
+      name: 'Markdown',
     });
     expect(markdownOutput).toHaveAttribute('readonly');
   });

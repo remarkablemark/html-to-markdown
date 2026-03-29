@@ -55,14 +55,14 @@ export function ConverterHeader({
   const mobileToggleLabel = mobilePane === 'html' ? 'Markdown' : 'HTML';
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-300 bg-gray-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
-      <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between gap-3 border-b border-slate-300 bg-gray-50 px-4 py-2 dark:border-slate-800 dark:bg-slate-950">
+      <h1 className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
         HTML to Markdown
       </h1>
 
       <div className="flex items-center gap-2">
         <button
-          className="rounded border border-slate-300 bg-white px-3 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="rounded border border-slate-300 bg-white px-4 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 md:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           onClick={onTogglePane}
           type="button"
         >
@@ -70,7 +70,7 @@ export function ConverterHeader({
         </button>
 
         <button
-          className="rounded border border-slate-300 bg-white px-3 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="rounded border border-slate-300 bg-white px-4 py-1 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           disabled={!markdown.length}
           onClick={() => {
             void handleCopyButtonClick();
