@@ -56,9 +56,9 @@ export function ConverterHeader({
 
   return (
     <header className="sticky top-0 z-10 mb-4 flex items-center justify-between gap-2 rounded-md border border-slate-300 bg-white/95 p-3 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-950/95">
-      <h2 className="text-sm font-medium text-slate-700 dark:text-slate-300">
-        Converter
-      </h2>
+      <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-slate-100">
+        HTML to Markdown
+      </h1>
 
       <div className="flex items-center gap-2">
         <button
