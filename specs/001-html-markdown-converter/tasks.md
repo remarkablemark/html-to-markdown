@@ -1,6 +1,6 @@
 # Tasks: HTML to Markdown Converter
 
-**Input**: Design documents from `/Users/mark/Code/javascript/html-to-markdown/specs/001-html-markdown-converter/`
+**Input**: Design documents from current directory
 **Prerequisites**: `plan.md`, `spec.md`, `research.md`, `data-model.md`, `contracts/conversion-contract.md`, `quickstart.md`
 
 **Tests**: Test tasks are REQUIRED. Define failing tests first, then implement to pass.
@@ -121,17 +121,17 @@
 
 **Purpose**: Final validation, documentation updates, and quality gates across all stories.
 
-- [ ] T036 [P] Update feature usage and behavior notes in `README.md`
-- [ ] T037 [P] Align verification steps and acceptance checks in `specs/001-html-markdown-converter/quickstart.md`
-- [ ] T038 Run `npm run lint` and resolve issues in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
-- [ ] T039 Run `npm run lint:tsc` and resolve type errors in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
-- [ ] T040 Run `npm run test:ci` and confirm coverage thresholds for converter tests in `src/components/Converter/`, `src/components/ConverterHeader/`, and `src/utils/`
-- [ ] T041 Run `npm run build` and verify production output generated in `dist/`
-- [ ] T042 [P] Add representative HTML fixture suite (>=20 samples) in `src/utils/__fixtures__/representativeHtmlSamples.ts`
-- [ ] T043 Add conversion accuracy regression test asserting >=95% sample pass rate in `src/utils/convertHtmlToMarkdown.representative.test.ts`
-- [ ] T044 [P] Add integration test verifying reload clears input/output session state in `src/components/Converter/Converter.persistence.test.tsx`
-- [ ] T045 [P] Add UI scope test verifying no file upload or URL import controls are rendered in `src/components/Converter/Converter.inputScope.test.tsx`
-- [ ] T046 [P] Add unit test ensuring conversion pipeline performs no network/API calls in `src/utils/convertHtmlToMarkdown.clientOnly.test.ts`
+- [x] T036 [P] Update feature usage and behavior notes in `README.md`
+- [x] T037 [P] Align verification steps and acceptance checks in `specs/001-html-markdown-converter/quickstart.md`
+- [x] T038 Run `npm run lint` and resolve issues in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
+- [x] T039 Run `npm run lint:tsc` and resolve type errors in `src/components/`, `src/utils/`, `src/constants/`, and `src/types/`
+- [x] T040 Run `npm run test:ci` and confirm coverage thresholds for converter tests in `src/components/Converter/`, `src/components/ConverterHeader/`, and `src/utils/`
+- [x] T041 Run `npm run build` and verify production output generated in `dist/`
+- [x] ~~T042 [P] Add representative HTML fixture suite (>=20 samples) in `src/utils/__fixtures__/representativeHtmlSamples.ts`~~
+- [x] ~~T043 Add conversion accuracy regression test asserting >=95% sample pass rate in `src/utils/convertHtmlToMarkdown.representative.test.ts`~~
+- [x] ~~T044 [P] Add integration test verifying reload clears input/output session state in `src/components/Converter/Converter.persistence.test.tsx`~~
+- [x] ~~T045 [P] Add UI scope test verifying no file upload or URL import controls are rendered in `src/components/Converter/Converter.inputScope.test.tsx`~~
+- [x] ~~T046 [P] Add unit test ensuring conversion pipeline performs no network/API calls in `src/utils/convertHtmlToMarkdown.clientOnly.test.ts`~~
 
 ---
 

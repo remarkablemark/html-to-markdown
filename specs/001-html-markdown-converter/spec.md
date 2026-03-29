@@ -1,8 +1,8 @@
 # Feature Specification: HTML to Markdown Converter
 
-**Feature Branch**: `001-html-markdown-converter`  
-**Created**: 2026-03-28  
-**Status**: Draft  
+**Feature Branch**: `001-html-markdown-converter`
+**Created**: 2026-03-28
+**Status**: Done
 **Input**: User description: "HTML to Markdown converter"
 
 ## Clarifications

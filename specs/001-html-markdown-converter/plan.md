@@ -1,7 +1,7 @@
 # Implementation Plan: HTML to Markdown Converter
 
-**Branch**: `001-html-markdown-converter` | **Date**: 2026-03-28 | **Spec**: `/Users/mark/Code/javascript/html-to-markdown/specs/001-html-markdown-converter/spec.md`
-**Input**: Feature specification from `/Users/mark/Code/javascript/html-to-markdown/specs/001-html-markdown-converter/spec.md`
+**Branch**: `001-html-markdown-converter` | **Date**: 2026-03-28 | **Spec**: `spec.md`
+**Input**: Feature specification from `spec.md`
 
 ## Summary
 
@@ -37,7 +37,7 @@ Post-Phase-1 re-check: PASS. Phase 1 artifacts define explicit conversion rules,
 ### Documentation (this feature)
 
 ```text
-/Users/mark/Code/javascript/html-to-markdown/specs/001-html-markdown-converter/
+specs/001-html-markdown-converter/
 ├── plan.md
 ├── research.md
 ├── data-model.md
@@ -50,7 +50,7 @@ Post-Phase-1 re-check: PASS. Phase 1 artifacts define explicit conversion rules,
 ### Source Code (repository root)
 
 ```text
-/Users/mark/Code/javascript/html-to-markdown/
+/
 ├── src/
 │   ├── components/
 │   │   ├── App/
