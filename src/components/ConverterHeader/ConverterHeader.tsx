@@ -103,7 +103,7 @@ export function ConverterHeader({
 
         <button
           aria-label={copyButtonLabel}
-          className={`h-9 cursor-pointer rounded border border-slate-300 p-2 text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:text-sm md:font-medium dark:border-slate-600 ${justCopied ? 'scale-95 bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/30 dark:text-slate-200 dark:hover:bg-green-900/30' : 'bg-blue-500 hover:bg-blue-600'}`}
+          className={`h-9 cursor-pointer rounded border border-slate-300 p-2 text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-4 md:text-sm md:font-medium dark:border-slate-600 ${justCopied ? 'scale-95 bg-green-500 text-white hover:bg-green-500 dark:bg-green-600 dark:text-white dark:hover:bg-green-600' : 'bg-blue-500 hover:bg-blue-600'}`}
           disabled={!markdown.length}
           onClick={() => {
             void handleCopyButtonClick();
