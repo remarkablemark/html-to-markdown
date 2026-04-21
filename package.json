@@ -20,7 +20,7 @@
     "postcss": "8.5.10",
     "react": "19.2.5",
     "react-dom": "19.2.5",
-    "tailwindcss": "4.2.2",
+    "tailwindcss": "4.2.3",
     "turndown": "7.2.4",
     "turndown-plugin-gfm": "1.0.2"
   },
