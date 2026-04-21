@@ -15,7 +15,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "4.2.2",
+    "@tailwindcss/postcss": "4.2.3",
     "dompurify": "3.4.0",
     "postcss": "8.5.10",
     "react": "19.2.5",
