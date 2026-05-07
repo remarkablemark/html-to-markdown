@@ -18,8 +18,8 @@
     "@tailwindcss/postcss": "4.2.4",
     "dompurify": "3.4.2",
     "postcss": "8.5.14",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "tailwindcss": "4.2.4",
     "turndown": "7.2.4",
     "turndown-plugin-gfm": "1.0.2"
