@@ -17,7 +17,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "4.3.3",
     "dompurify": "3.4.17",
-    "postcss": "8.5.30",
+    "postcss": "8.5.31",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tailwindcss": "4.3.3",
