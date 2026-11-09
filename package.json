@@ -21,7 +21,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tailwindcss": "4.3.4",
-    "turndown": "7.2.4",
+    "turndown": "7.2.5",
     "turndown-plugin-gfm": "1.0.2"
   },
   "devDependencies": {
